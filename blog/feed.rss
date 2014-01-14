@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Tue, 14 Jan 2014 14:58:26 -0600</lastBuildDate>
-<pubDate>Tue, 14 Jan 2014 14:58:26 -0600</pubDate>
+<lastBuildDate>Tue, 14 Jan 2014 15:04:57 -0600</lastBuildDate>
+<pubDate>Tue, 14 Jan 2014 15:04:57 -0600</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 What Is Finance?
@@ -68,8 +68,13 @@ What this equation says is that the <em>price</em> \(p_t\) of an asset at time \
 
 <p>At heart, I’m an idealist. That’s why I’ve spent most of this post giving my aspirational view of what finance is, or rather, what I want finance to be. But I’m willing to get down and dirty with the gamblers not just to pay the bills, but more importantly to see how the financial system really works. I’ll probably spend quite a few more blog posts riffing on the “what is finance” theme, since if I haven’t made it clear over the past 2,600 words, I’m still pretty hazy on the concept. I hope you’ll stick with me to see if I ever figure it out!</p>
 <!-- text end -->
+<p id='twitter'>Comments?&nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/what-is-finance.html"
+ data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
 ]]></description><link>http://ejenk.com/blog/what-is-finance.html</link>
 <guid>http://ejenk.com/blog/what-is-finance.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Tue, 14 Jan 2014 14:58:21 -0600</pubDate></item>
+<pubDate>Tue, 14 Jan 2014 14:58:00 -0600</pubDate></item>
 </channel></rss>
