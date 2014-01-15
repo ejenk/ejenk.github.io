@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Tue, 14 Jan 2014 15:04:57 -0600</lastBuildDate>
-<pubDate>Tue, 14 Jan 2014 15:04:57 -0600</pubDate>
+<lastBuildDate>Tue, 14 Jan 2014 19:57:06 -0600</lastBuildDate>
+<pubDate>Tue, 14 Jan 2014 19:57:06 -0600</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 What Is Finance?
@@ -43,9 +43,9 @@ What Is Finance?
 
 <p>The reason insurance works is that people are willing to give up a small amount of money to avoid a big, if unlikely, risk. But in order for this deal to be profitable for the insurer, the small amount of money has to be greater than the insurer’s expected payout. Both sides are happy because you are more sensitive to the risk than the insurer, who can afford to pay to rebuild your house after a fire because they’ve been receiving premiums from lots of other people who don’t need to rebuild. Things like flood insurance are much more tricky, because floods tend to affect a lot of houses at once, so insuring a bunch of houses in the same area would expose an insurer to massive risk.</p>
 
-<p>If homeowners buy insurance to protect against losing their house in a fire, then why shouldn’t they also buy insurance to protect against the value of their house going down due to decreased demand? Indeed, a number of such schemes appeared in the wake of the housing crisis, but <a href=”http://www.bizjournals.com/sanfrancisco/blog/2012/08/home-value-insurance-real-estate-venture.html?page=all”>consumers didn’t bite</a> and <a href=”http://www.washingtonpost.com/realestate/home-value-insurance-were-not-convinced-its-a-good-idea/2012/05/23/gJQAgMpXpU_story.html”>pundits remain skeptical</a>. One reason to be very skeptical of such a product is that it suffers from the same problem as flood insurance, but worse: in 2008 we saw housing prices plummet across most of the US.</p>
+<p>If homeowners buy insurance to protect against losing their house in a fire, then why shouldn’t they also buy insurance to protect against the value of their house going down due to decreased demand? Indeed, a number of such schemes appeared in the wake of the housing crisis, but <a href="http://www.bizjournals.com/sanfrancisco/blog/2012/08/home-value-insurance-real-estate-venture.html?page=all">consumers didn’t bite</a> and <a href="http://www.washingtonpost.com/realestate/home-value-insurance-were-not-convinced-its-a-good-idea/2012/05/23/gJQAgMpXpU_story.html">pundits remain skeptical</a>. One reason to be very skeptical of such a product is that it suffers from the same problem as flood insurance, but worse: in 2008 we saw housing prices plummet across most of the US.</p>
 
-<p>Nevertheless, finance may still be able to provide a solution. Rather than purchasing insurance, a savvy homeowner could in principle participate in a <a href=”http://www.cmegroup.com/trading/real-estate/files/spcaseshiller_fact_card.pdf”>Case-Shiller Home Price Index futures market</a>. While financial derivative markets are typically only available to institutional investors, there’s no reason in principle that the power of such markets could not be brought to homeowners. Buying put options for the Case-Shiller Home Price Index is nearly equivalent to buying home value insurance, but potentially with less overhead and systemic risk.</p>
+<p>Nevertheless, finance may still be able to provide a solution. Rather than purchasing insurance, a savvy homeowner could in principle participate in a <a href="http://www.cmegroup.com/trading/real-estate/files/spcaseshiller_fact_card.pdf">Case-Shiller Home Price Index futures market</a>. While financial derivative markets are typically only available to institutional investors, there’s no reason in principle that the power of such markets could not be brought to homeowners. Buying put options for the Case-Shiller Home Price Index is nearly equivalent to buying home value insurance, but potentially with less overhead and systemic risk.</p>
 
 <p>In the interest of keeping the length of this introductory post (relatively) short, I’ll put off a discussion of how finance can solve the more thorny community problem to a future post. But I hope that I’ve laid out the basic idea: financial instruments like insurance and futures contracts exist to hedge risks. If an investment seems too good to be true, like houses did during the bubble, it’s probably because you haven’t considered the cost of hedging all the risk. Gambling can be fun, but when it comes to how we should run our lives, it seems prudent to not allow ourselves more risk than we’re willing to bear.</p>
 
@@ -76,5 +76,5 @@ What this equation says is that the <em>price</em> \(p_t\) of an asset at time \
 ]]></description><link>http://ejenk.com/blog/what-is-finance.html</link>
 <guid>http://ejenk.com/blog/what-is-finance.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Tue, 14 Jan 2014 14:58:00 -0600</pubDate></item>
+<pubDate>Tue, 14 Jan 2014 15:08:00 -0600</pubDate></item>
 </channel></rss>
