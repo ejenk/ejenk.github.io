@@ -28,6 +28,51 @@
 </div></div></div>
 <div id="divbody"><div class="content">
 <!-- entry begin -->
+<h3><a class="ablack" href="http://ejenk.com/blog/buffetts-jackpot.html">
+Buffett’s Jackpot
+</a></h3>
+<div class="subtitle">January 21, 2014  &mdash; 
+Evan Jenkins</div>
+<!-- text begin -->
+
+<p>A fun finance-y story making the rounds is <a href="http://dealbook.nytimes.com/2014/01/21/1-billion-for-a-perfect-n-c-a-a-bracket-courtesy-of-warren-buffett/">Warren Buffett’s offer of $1 billion</a> for filling out a perfect NCAA bracket. Most of the analysis has focused on estimating the odds of winning (the general consensus: not good). But since I’ve been on an asset pricing kick, I want to talk about the misleading values attached to giant prizes and what this prize is actually worth.</p>
+
+<p>As is the case with Powerball jackpots, Buffett’s prize is actually a choice of two prizes: if you want your full $1 billion, it will be paid out over 40 years in the form of a $25 million annual annuity. If you want a lump sum right now, you’ll have to settle for a mere $500 million. While the first choice nominally sums to $1 billion, you’re paying a huge opportunity cost to wait decades for much of that money. So which prize should you choose?</p>
+
+<p>The value of the lump sum is easy enough to calculate: you get $500 million now, so it’s worth $500 million. (I’m going to ignore taxes for most of the rest of this discussion because I don’t know enough about how taxes work. My guess is that, given a competent accountant, taxes won’t disproportionately affect one choice vs. the other.) The value of the annuity is also not too bad to calculate, if we believe our lovely asset pricing formula, \(p = E(mx)\). First, let’s see how this formula behaves for an asset that always pays out the same amount, that is, for a <em>risk-free</em> asset. If I put $1 to a risk-free one-period bond at time \(t\), what should I expect it to pay me at time \(t + 1\)? Well, since the payoff \(x_{t + 1}\) is nonrandom, we can pull it out of the conditional expectation:
+\[1 = E_t(m_{t + 1} x_{t + 1}) = x_{t + 1}E_t(m_{t + 1}),\]
+so
+\[x_{t + 1} = \frac{1}{E_t(m_{t + 1})}.\]
+The payoff \(x_{t + 1}\) is called the <em>risk-free rate</em> and is typically denoted by \(R^f\). These days, interest rates are pretty low, but the historical average risk-free rate is around 4%, that is, \(R^f = 1.04\). Since we’re talking about the next 40 years, let’s just use this number.</p>
+
+<p>So let’s look at the annuity’s payoff. It pays us $25 million each year for the next 40 years, so we can write \[x_{t + i} = d_{t + i} + p_{t + i},\]
+where
+\[d_{t + i} = \begin{cases}25 & \text{if $0 \leq i \leq 39$,}\\ 0 & \text{otherwise.}\end{cases}\]
+In other words, we can treat the payoff at time \(t + i\) as the sum of the annuity payoff \(d_{t + i}\) and the value \(p_{t + i}\) of the remaining payoffs. Assuming we get our first payment right now (so we tack it on to our starting price), our total value telescopes out as
+\begin{align*}
+25 + p_t &= 25 + E_t(m_{t + 1}x_{t + 1})\\
+&= 25 + 1.04^{-1}(25 + p_{t + 1})\\
+&= 25 + 1.04^{-1}(25 + 1.04^{-1}(25 + p_{t + 2}))\\
+&\vdots\\
+&= \sum_{i = 0}^{39} 1.04^{-i} \times 25\\
+&= \frac{1 - 1.04^{-40}}{1 - 1.04^{-1}} \times 25\\
+&\approx 515.
+\end{align*}
+So there’s our answer: the lump sum is worth $500 million, while the annuity is worth $515 million, so we should take the annuity, right?</p>
+
+<p>Not so fast. If you’re a semibillionaire with any ambition whatsoever, you’re not just going to stuff this money under your mattress (or worse, spend it!). With your newfound low risk-aversion, you’re going to want to plow your money into investments with a higher expected return than risk-free bonds. The stock market has historically returned more like 10%. Discount your annuity by 10% annually and it’s worth a measly $269 million!</p>
+
+<p>But surely your annuity is worth more than that, right? After all, our formula shows that it’s actually worth $515 million, at least to somebody. The difficulty is finding that somebody. Here’s where things get a bit hazy, at least to me. Surely some giant financial firm would be willing to trade $515 million for your stream of future payments. But I’m not sure what the tax or legal implications of this are. What you won’t be able to find is somebody willing to lend you $515 million at a 4% annual rate, unless they can be sure that the loan really is risk-free: this means they would need your stream of annuity payments as collateral, which is the same as actually owning the annuity!</p>
+
+<p>So my advice to you if you somehow win Warren Buffett’s money: hire some good lawyers and financial advisors to find out if you can feasibly sell your annuity. If you’re lucky, you might get a bit more than the lump sum. But either way, just know that you’re not even close to being a billionaire. So you’d better get your money to work!</p>
+<!-- text end -->
+<p id='twitter'>Comments?&nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/buffetts-jackpot.html"
+ data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+<!-- entry end -->
+<!-- entry begin -->
 <h3><a class="ablack" href="http://ejenk.com/blog/complete-markets-a-fairy-tale.html">
 Complete Markets: A Fairy Tale
 </a></h3>
@@ -67,7 +112,7 @@ So the contribution of each state to the price is the probability of the state, 
 
 <p>Now that we have the discount factor in hand, we can ask how an individual investor will act in this market. For simplicity, we’re going to assume that this individual is only alive at times \(t\) and \(t + 1\), so they’ll spend all their money while they can. This may seem like a silly assumption, but it makes the notation easier without actually losing any of the story.</p>
 
-<p>Let’s say our individual has a wealth of \(w\). What they want to do is maximize their utility \(u(c_t)\) of consuming some of that wealth now, plus their expected discounted utility \(\beta E_t(u(c_{t + 1}))\) of investing the rest to consume a time \(t + 1\). We can think of the consumption \(c_{t + 1}\) as representing the asset, called the <em>consumption claim</em>, that we invest in at time \(t\) to pay for our future consumption. We write the wealth constraint on this optimization as \[c_t + p_t(c_{t + 1}) = w.\] Notice that this optimization problem has \(n + 1\) variables: how much we consume today, and the \(n\) state weightings \(c_{t + 1}^i\) of our consumption claim. We can write the price of the consumption claim in terms of these variables as \[p_t(c_{t + 1}) \sum_{i = 1}^n p_i c_{t + 1}^i.\]</p>
+<p>Let’s say our individual has a wealth of \(w\). What they want to do is maximize their utility \(u(c_t)\) of consuming some of that wealth now, plus their expected discounted utility \(\beta E_t(u(c_{t + 1}))\) of investing the rest to consume a time \(t + 1\). We can think of the consumption \(c_{t + 1}\) as representing the asset, called the <em>consumption claim</em>, that we invest in at time \(t\) to pay for our future consumption. We write the wealth constraint on this optimization as \[c_t + p_t(c_{t + 1}) = w.\] Notice that this optimization problem has \(n + 1\) variables: how much we consume today, and the \(n\) state weightings \(c_{t + 1}^i\) of our consumption claim. We can write the price of the consumption claim in terms of these variables as \[p_t(c_{t + 1}) = \sum_{i = 1}^n c_{t + 1}^i p_i.\]</p>
 
 <p>I’ll leave it as an exercise for the reader to check using Lagrange multipliers that we get maximal utility plus expected discounted utility precisely when, for each \(i\),
 \[\beta \frac{u'(c_{t + 1}^i)}{u'(c_t)} = m_i.\]
