@@ -2,9 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Tue, 21 Jan 2014 22:10:59 -0600</lastBuildDate>
-<pubDate>Tue, 21 Jan 2014 22:10:59 -0600</pubDate>
+<lastBuildDate>Wed, 29 Jan 2014 21:59:42 -0600</lastBuildDate>
+<pubDate>Wed, 29 Jan 2014 21:59:42 -0600</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Why You Shouldn’t Care About Preferences
+</title><description><![CDATA[
+
+<p>So you want to be a rational investor, eh? Congratulations, if you’re reading my blog, you’re already on the right track! One thing that might worry you, though, is all of those other crazies out there. After all, what good is it for you to be rational if the market is driven by a bunch of amped-up loonies on Wall Street? What if, as <a href="http://noahpinionblog.blogspot.com/2014/01/what-if-preferences-are-unstable.html">Noah Smith suggests</a>, other people’s investment decisions aren’t determined by a time-invariant concave utility function with hyperbolic discounting (heaven forbid!)? I’m here to tell you that it doesn’t matter. If your investment strategy depends on other people being rational, you’re doing it wrong.</p>
+
+<p>In <a href="/blog/complete-markets-a-fairy-tale.html">my post on complete markets</a>, I gave you the magic formula for maximizing your utility in a complete market: \[\beta \frac{u'(c_{t + 1}(s_i))}{u'(c_t)} = m_i = \frac{p_i}{\pi_i}.\]
+In words: we should tune our consumption such that our time-discounted relative marginal utility in each state of nature is equal \(m_i\), the ratio of the market price of a contingent claim on that state of nature to the probability of that state occurring.</p>
+
+<p>Now, from the looks of this, other people’s preferences don’t come into play at all: as long as we understand our own preferences, we can just look at market prices to determine how much money to bet on each state. Unfortunately, this also requires us to know the probability \(\pi_i\) of each state. But how do we know what the right probabilities are? In the real world, we might use pricing information of derivatives to determine what the market thinks the probability of various events might be. But these probabilities are filtered through other people’s preferences! There seems to be no getting around it: after all, we need to use all of the market information just to get the numerator of \(m_i\), so we shouldn’t expect to squeeze anything else out to determine the denominator unless we make some extra modeling assumptions.</p>
+
+<p>So it seems we’re at an impasse. Unless we have a crystal ball to tell us the probability distribution of future events, we may very well be at the whims of the loonies. But you know what? It doesn’t really matter. For the big stuff, like long-term savings, finance has developed some tools to tell us what kind of returns we should expect on a market portfolio. I’ll talk about these in future posts; they’re far from perfect, but they rely on data analysis rather than trying to model other people’s minds. For the other kind of big stuff, hedging our idiosyncratic risks, we have our own intuition about our situation to rely on, which is probably more accurate than a market’s guess anyway. In short, all of the probabilities we need to be estimating are ones that are best estimated from outside other people’s heads.</p>
+
+<p>Trying to time the market and beat all of the suckers can be tempting. It can be fun. It can even be profitable! But let’s not call it rational investing. It’s gambling. Now, from a macro perspective, a bunch of loony gamblers can certainly have a deleterious effect on the market and on the wider economy. There are certainly reasons, from a policy perspective, to want to understand these effects. But that doesn’t mean we should jump in the loony bin with them! Loonies come and go, but in the long run, fundamentals drive the growth of our economy. When you invest, look at the prices and see if they seem cheap or expensive to you, not to some model that purports to know what other people are thinking. And as more people continue to forsake gambling for Vanguard index funds, the ride will only get smoother.</p>
+<!-- text end -->
+<p id='twitter'>Comments?&nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html"
+ data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+]]></description><link>http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html</link>
+<guid>http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html</guid>
+<dc:creator>Evan Jenkins</dc:creator>
+<pubDate>Wed, 29 Jan 2014 21:59:00 -0600</pubDate></item>
 <item><title>
 Buffett’s Jackpot
 </title><description><![CDATA[
@@ -48,7 +72,7 @@ So there’s our answer: the lump sum is worth $500 million, while the annuity i
 ]]></description><link>http://ejenk.com/blog/buffetts-jackpot.html</link>
 <guid>http://ejenk.com/blog/buffetts-jackpot.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Tue, 21 Jan 2014 22:00:00 -0600</pubDate></item>
+<pubDate>Wed, 29 Jan 2014 21:58:51 -0600</pubDate></item>
 <item><title>
 Complete Markets: A Fairy Tale
 </title><description><![CDATA[
@@ -85,10 +109,10 @@ So the contribution of each state to the price is the probability of the state, 
 
 <p>Now that we have the discount factor in hand, we can ask how an individual investor will act in this market. For simplicity, we’re going to assume that this individual is only alive at times \(t\) and \(t + 1\), so they’ll spend all their money while they can. This may seem like a silly assumption, but it makes the notation easier without actually losing any of the story.</p>
 
-<p>Let’s say our individual has a wealth of \(w\). What they want to do is maximize their utility \(u(c_t)\) of consuming some of that wealth now, plus their expected discounted utility \(\beta E_t(u(c_{t + 1}))\) of investing the rest to consume a time \(t + 1\). We can think of the consumption \(c_{t + 1}\) as representing the asset, called the <em>consumption claim</em>, that we invest in at time \(t\) to pay for our future consumption. We write the wealth constraint on this optimization as \[c_t + p_t(c_{t + 1}) = w.\] Notice that this optimization problem has \(n + 1\) variables: how much we consume today, and the \(n\) state weightings \(c_{t + 1}^i\) of our consumption claim. We can write the price of the consumption claim in terms of these variables as \[p_t(c_{t + 1}) = \sum_{i = 1}^n c_{t + 1}^i p_i.\]</p>
+<p>Let’s say our individual has a wealth of \(w\). What they want to do is maximize their utility \(u(c_t)\) of consuming some of that wealth now, plus their expected discounted utility \(\beta E_t(u(c_{t + 1}))\) of investing the rest to consume a time \(t + 1\). We can think of the consumption \(c_{t + 1}\) as representing the asset, called the <em>consumption claim</em>, that we invest in at time \(t\) to pay for our future consumption. We write the wealth constraint on this optimization as \[c_t + p_t(c_{t + 1}) = w.\] Notice that this optimization problem has \(n + 1\) variables: how much we consume today, and the \(n\) state weightings \(c_{t + 1}(s_i)\) of our consumption claim. We can write the price of the consumption claim in terms of these variables as \[p_t(c_{t + 1}) = \sum_{i = 1}^n c_{t + 1}(s_i) p_i.\]</p>
 
 <p>I’ll leave it as an exercise for the reader to check using Lagrange multipliers that we get maximal utility plus expected discounted utility precisely when, for each \(i\),
-\[\beta \frac{u'(c_{t + 1}^i)}{u'(c_t)} = m_i.\]
+\[\beta \frac{u'(c_{t + 1}(s_i))}{u'(c_t)} = m_i.\]
 This result is mind-blowing and deep: what it’s saying is that in a complete market, a rational utility-maximizer will buy assets in such a way as to make their personal discount factor, which depends on their utility function, equal to the discount factor \(m\) of the market, which was imputed from pricing information. This holds even if we put additional variables like leisure or the joys of homeownership into our utility function. A rational investor will choose to share fully in all systemic market risks and opportunities and hedge fully against their own idiosyncratic risks and opportunities. A rational investor will hedge against the loss of their house, but not try to invest countercyclically to hedge against recessions. Likewise, a rational investor should hedge, in the other direction, against getting a raise, or a local increase in housing values, but not against widespread economic booms. In an economy of rational investors, all risk and all opportunity is shared.</p>
 
 <hr />
@@ -115,7 +139,7 @@ This result is mind-blowing and deep: what it’s saying is that in a complete m
 ]]></description><link>http://ejenk.com/blog/complete-markets-a-fairy-tale.html</link>
 <guid>http://ejenk.com/blog/complete-markets-a-fairy-tale.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Mon, 20 Jan 2014 19:22:00 -0600</pubDate></item>
+<pubDate>Wed, 29 Jan 2014 21:58:49 -0600</pubDate></item>
 <item><title>
 What Is Finance?
 </title><description><![CDATA[
@@ -187,5 +211,5 @@ What this equation says is that the <em>price</em> \(p_t\) of an asset at time \
 ]]></description><link>http://ejenk.com/blog/what-is-finance.html</link>
 <guid>http://ejenk.com/blog/what-is-finance.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Mon, 20 Jan 2014 19:22:00 -0600</pubDate></item>
+<pubDate>Wed, 29 Jan 2014 21:58:39 -0600</pubDate></item>
 </channel></rss>
