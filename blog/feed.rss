@@ -2,9 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Wed, 29 Jan 2014 21:59:42 -0600</lastBuildDate>
-<pubDate>Wed, 29 Jan 2014 21:59:42 -0600</pubDate>
+<lastBuildDate>Tue, 04 Feb 2014 15:18:21 -0600</lastBuildDate>
+<pubDate>Tue, 04 Feb 2014 15:18:21 -0600</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Life in an Incomplete Market
+</title><description><![CDATA[
+
+<p>I’ve already told you the beautiful story of <a href="/blog/complete-markets-a-fairy-tale.html">complete markets</a>, where we as rational investors perfectly hedge every idiosyncratic risk and share in every systemic one. Today I want to tell a slightly (but only slightly!) more realistic story, the story of incomplete markets.</p>
+
+<hr />
+
+<p>Recall that a <em>complete market</em> is one in which we can choose to hold a portfolio that gives any payoff we want in any state of nature. In other words, if \(\mathcal{S} = \{s_1, s_2, \ldots, s_n\}\) is the set of future states of nature, given any function \(x: \mathcal{S} \to \mathbb{R}\), we can purchase assets that will give us a payoff of \(x(s_i)\) in the state \(s_i\). An <em>incomplete market</em> is one in which we only have access to a linear subspace of the vector space \(\mathbb{R}^{\mathcal{S}}\) of functions from \(\mathcal{S} \to \mathbb{R}\). In other words, we can still hold any linear combination of assets, but there aren’t enough assets in existence to cover every possible contingency. This seems like a reasonable assumption to make: there are zillions of possible states of the world, but we can’t reasonably expect (or want) to bet on all of them.</p>
+
+<p>The question, now, is how does a rational actor invest in this market? One way to answer this question is to consider all possible completions of this market. Let’s denote by \(V \subset \mathbb{R}^{\mathcal{S}}\) the subspace of payoffs that exist in our market. The market will have equilibrated to some linear price function \(p: V \to \mathbb{R}\). Now consider an extension \(\widetilde{p}: \mathbb{R}^{\mathcal{S}} \to \mathbb{R}\) of \(p\), that is, a way to linearly price new assets that keeps the prices of existing assets the same. There are many such extensions, as every time a new asset is introduced that is not a linear combination of old assets, it could in principle be given any price. Let’s denote by \(\mathcal{P}\) the set of all such extensions of our pricing function.</p>
+
+<p>Let’s denote by \(U^{\ast}\) our maximum utility in the incomplete market, and by \(U^{\ast}_{\widetilde{p}}\) the maximum utility we could achieve in the market completed with the price function \(\widetilde{p}\). It’s clear that regardless of what \(\widetilde{p}\) is, we must have \(U^{\ast} \leq U^{\ast}_{\widetilde{p}}\): in the completed market, we can still buy anything we could buy in the incomplete market for the same price, so any utility we can achieve in the incomplete market we can also achieve in the complete market. Since this is true for any \(\widetilde{p} \in \mathcal{P}\), we have \[U^{\ast} \leq \inf_{\widetilde{p} \in \mathcal{P}} U^{\ast}_{\widetilde{p}}.\]</p>
+
+<p>Now comes the exciting part of the story: the above inequality is actually an equality! In other words, in an incomplete market, we can achieve as much utility as the worst of all possible completions of that market. Why? Because for each new asset we can introduce, there will always be a price at which you’ll be indifferent towards it. If all of the new assets are given prices that make you indifferent, you might as well hold only old assets. So we conclude
+\[U^{\ast} = \inf_{\widetilde{p} \in \mathcal{P}} U^{\ast}_{\widetilde{p}}.\]</p>
+
+<hr />
+
+<p>Let’s step back and think about what this says. How much utility are we losing by not having complete markets? It depends. If the “missing assets” are ones for which everybody would agree on the price, then we lose nothing, because nobody would bother buying them. Only in cases where the asset represents differing values for different agents do we feel the sting of incomplete markets. Insurance is important because we really care, moreso than most people, if our house burns down. From this perspective, stocks actually aren’t that important. Indeed, it’s one of the great mysteries of asset pricing why the stock market yields such a high premium!</p>
+
+<p>Again, let me remind you not to take these fairy tales too seriously. After all, the assumption that we can buy any linear combination of assets (including those with negative coefficients!) is not a terribly realistic one. Nevertheless, we should take heart in the fact that this story, suprisingly, has a happy ending. It says that the most important assets to have in a market are the ones that will generate the most disagreement over their value. But this is precisely the kind of asset that markets are most likely to provide, since these generate the most profit. The extent to which markets are incomplete can therefore be divided along two lines: some assets aren’t being traded because it’s not worth the bother, and other assets aren’t traded because regulations make it either illegal or impractical to do so. On the other hand, lest you think I’ve turned libertarian, some markets that should exist don’t due to lack of government regulation: how many people bother with carbon credit markets? Not many, given that world governments aren’t terribly serious about curbing carbon emissions. Either way, it’s clear that governments play a central role in determining how complete our markets are.</p>
+
+<p>In summary, life in an incomplete market isn’t so bad. To be precise, it’s only as bad as its worst completion. So when we encounter an incompleteness in our market, it’s important to ask ourselves why it’s there. Is it there because nobody would bother trading in it anyway, or is it there because of a failure in how markets are regulated? And if the answer is neither, you have a great opportunity to make some money!</p>
+<!-- text end -->
+<p id='twitter'>Comments?&nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/life-in-an-incomplete-market.html"
+ data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+]]></description><link>http://ejenk.com/blog/life-in-an-incomplete-market.html</link>
+<guid>http://ejenk.com/blog/life-in-an-incomplete-market.html</guid>
+<dc:creator>Evan Jenkins</dc:creator>
+<pubDate>Tue, 04 Feb 2014 15:16:51 -0600</pubDate></item>
 <item><title>
 Why You Shouldn’t Care About Preferences
 </title><description><![CDATA[
