@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Wed, 12 Feb 2014 12:14:59 -0600</lastBuildDate>
-<pubDate>Wed, 12 Feb 2014 12:14:59 -0600</pubDate>
+<lastBuildDate>Wed, 12 Feb 2014 12:20:57 -0600</lastBuildDate>
+<pubDate>Wed, 12 Feb 2014 12:20:57 -0600</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Telling Stories about Market Corrections
@@ -185,7 +185,7 @@ So there’s our answer: the lump sum is worth $500 million, while the annuity i
 ]]></description><link>http://ejenk.com/blog/buffetts-jackpot.html</link>
 <guid>http://ejenk.com/blog/buffetts-jackpot.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Wed, 29 Jan 2014 21:58:51 -0600</pubDate></item>
+<pubDate>Tue, 21 Jan 2014 00:00:00 -0600</pubDate></item>
 <item><title>
 Complete Markets: A Fairy Tale
 </title><description><![CDATA[
@@ -252,7 +252,7 @@ This result is mind-blowing and deep: what it’s saying is that in a complete m
 ]]></description><link>http://ejenk.com/blog/complete-markets-a-fairy-tale.html</link>
 <guid>http://ejenk.com/blog/complete-markets-a-fairy-tale.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Wed, 29 Jan 2014 21:58:49 -0600</pubDate></item>
+<pubDate>Mon, 20 Jan 2014 00:00:00 -0600</pubDate></item>
 <item><title>
 What Is Finance?
 </title><description><![CDATA[
@@ -324,5 +324,5 @@ What this equation says is that the <em>price</em> \(p_t\) of an asset at time \
 ]]></description><link>http://ejenk.com/blog/what-is-finance.html</link>
 <guid>http://ejenk.com/blog/what-is-finance.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Wed, 29 Jan 2014 21:58:00 -0600</pubDate></item>
+<pubDate>Tue, 14 Jan 2014 00:00:00 -0600</pubDate></item>
 </channel></rss>
