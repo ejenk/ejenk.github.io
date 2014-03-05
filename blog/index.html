@@ -7,17 +7,18 @@
 <title>The Market Completionist</title>
 <script type="text/javascript">
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-47261387-1']);
-    _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-47261387-1']);
+        _gaq.push(['_trackPageview']);
 
-    (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
 
-</script>
+        </script>
+</head><body>
 <script type="text/javascript"
 		   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></head><body>
 <div id="divbodyholder">
@@ -28,10 +29,46 @@
 </div></div></div>
 <div id="divbody"><div class="content">
 <!-- entry begin -->
-<h3><a class="ablack" href="http://ejenk.com/blog/telling-stories-about-market-corrections.html">
+<h3><a class="ablack" href="the-capm-and-facebook-when-up-is-down.html">
+The CAPM and Facebook: When Up Is Down
+</a></h3>
+<div class="subtitle">March 04, 2014  &mdash; 
+Evan Jenkins</div>
+<!-- text begin -->
+
+<p>One of my favorite topics in finance (one that I will delve into deeply in future posts) is understanding cross-sectional stock market returns. A thankfully now-common piece of investment wisdom is to not invest in individual stocks but rather to invest in the market as a whole, that is, in a fund like the Vanguard Total Index that owns shares in all stocks weighted by market value. But is this actually the optimal way to invest? Do some stocks perform better than other stocks, and do some stocks tend to move together, an important consideration for hedging risk?</p>
+
+<p>The rich theory of cross-sectional pricing that has been developed over the past half-century is all too often swept under the rug when it comes to the popular financial media. It really boils my blood when I hear things like what I heard on a prominent national radio show this evening: Facebook (NASDAQ:FB) was up 2% today on news that it was considering buying a drone manufacturer. Now, it’s certainly possible for news to move a stock’s price. But even the most basic asset-pricing theory will put the kibosh on that particular interpretation.</p>
+
+<hr />
+
+<p>One of the first successful models of stock market returns was the <i>capital asset pricing model</i> (CAPM), developed independently by a number of researchers in the 1960s. I plan on talking much more about the CAPM and its successors in future posts, but today I’m just going to explain just enough about it so that you can start yelling at the radio too.</p>
+
+<p>The idea of the CAPM is that the only predictable thing about the excess return <script type="math/tex">R^{ei} = R^i - R^f</script> (the return minus the return on the risk-free asset) of stock <script type="math/tex">i</script> is its covariance with the excess return <script type="math/tex">R^{em}</script> of the market portfolio (think the S&amp;P 500 or the Vanguard Total Index). In other words, if we run a time-series regression of <script type="math/tex">R^{ei}</script> against <script type="math/tex">R^{em}</script> to get
+<script type="math/tex">R_t^{ei} = \alpha_i + \beta_i R_t^{em} + \epsilon_t^i,</script>
+we should have <script type="math/tex">\alpha_i = 0</script>, so that the only difference between our stock’s return and a constant multiple of the market return is some unpredictable random factor <script type="math/tex">\epsilon_t^i</script>.</p>
+
+<p><a href="http://www.nasdaq.com/symbol/fb">According to NASDAQ</a>, the coefficient <script type="math/tex">\beta_i</script> for Facebook is 1.78. In other words, for every 1% the market goes up (or down), we should expect Facebook to go up (or down) 1.78%. (I’m ignoring the risk-free rate here because these days it’s pretty much zero.) So how did Facebook do here? Well, the S&amp;P 500 went up 1.53% today, which means that Facebook should have gone up <script type="math/tex">1.53 \times 1.78 = 2.7\%</script>. But it only went up a little over 2%! Even though Facebook’s stock went up (and, in fact, it went up more than the market as a whole), it underperformed by about 0.7%! The effect of the drone news, which should live in <script type="math/tex">\epsilon_t^i = -0.7%</script>, was negative!</p>
+
+<p>Now, the CAPM isn’t perfect, but I doubt the various corrections to it would be enough to account for this huge underperformance. Any sensible investor, insofar as they care about Facebook rumors, should see the drone news as likely having had a negative impact on Facebook’s valuation. (A more nuanced analysis would look only at the return since the news broke, but I can’t be bothered if the guy on the radio can’t.)</p>
+
+<hr />
+
+<p>Anybody who has ever listened to financial radio or watched financial television knows that this isn’t an isolated event. Individual stock movements are retroactively fit to the day’s news in isolation without any regard to the intricate relationship among different assets. I’m not saying that there’s no value to analyzing the impact of the day’s news on asset prices, but why do it in such a ham-fisted manner the you’re likely as not to get the sign of the effect wrong? Are the purported financial professionals simply incompetent, or do they not bother doing an actual analysis because they think it will bore or confuse their audience? In either case, isn’t it irresponsible to portray this stuff as financial news?</p>
+
+<p>I hope you’ll agree that this isn’t just one blogger’s smugness getting the best of him. I believe in financial markets as a means for people to improve their lives. But when the people who are held up as experts say things, knowingly or not, that are so completely wrong, it should not come as a surprise that few people have a good grasp of basic financial concepts. It’s obvious to most people, I hope, that Jim Cramer is peddling fluffy infotainment, but the problem goes much deeper. Virtually all financial media is aimed at the lowest common denominator. But if you don’t invite your audience to stretch their thinking, they’re going to remain uninformed, and they’ll quite likely suffer because of it.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/the-capm-and-facebook-when-up-is-down.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/the-capm-and-facebook-when-up-is-down.html"
+ data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+<!-- entry end -->
+<!-- entry begin -->
+<h3><a class="ablack" href="telling-stories-about-market-corrections.html">
 Telling Stories about Market Corrections
 </a></h3>
-<div class="subtitle">February 08, 2014 &mdash; 
+<div class="subtitle">February 08, 2014  &mdash; 
 Evan Jenkins</div>
 <!-- text begin -->
 
@@ -101,17 +138,17 @@ P(a_1 + a_2 > a) &= \int_{x + y > a} F'(x)F'(y)\,dx\,dy\\
 
 <p>So what we’ve shown is that when you measure corrections from a previous peak to a future trough, we’re almost always in a big correction. Even taking the more honest accounting of only looking at drops going forwards, you can still be pretty sure you’ll be down at least 5% or so from where you are now. You can tell yourself stories about scared investors or emerging market currencies, but ultimately, the existence of corrections is due to the high level of market volatility. The goal of financial analysis should be to explain that volatility directly, rather than to try to pick apart individual market fluctuations ex-post. Financial navel-gazing makes for good television, but it does little to help our understanding of markets.</p>
 <!-- text end -->
-<p id='twitter'>Comments?&nbsp;
+<p id='twitter'><a href="http://ejenk.com/blog/telling-stories-about-market-corrections.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/telling-stories-about-market-corrections.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
 <!-- entry end -->
 <!-- entry begin -->
-<h3><a class="ablack" href="http://ejenk.com/blog/life-in-an-incomplete-market.html">
+<h3><a class="ablack" href="life-in-an-incomplete-market.html">
 Life in an Incomplete Market
 </a></h3>
-<div class="subtitle">February 04, 2014 &mdash; 
+<div class="subtitle">February 04, 2014  &mdash; 
 Evan Jenkins</div>
 <!-- text begin -->
 
@@ -136,17 +173,17 @@ Evan Jenkins</div>
 
 <p>In summary, life in an incomplete market isn’t so bad. To be precise, it’s only as bad as its worst completion. So when we encounter an incompleteness in our market, it’s important to ask ourselves why it’s there. Is it there because nobody would bother trading in it anyway, or is it there because of a failure in how markets are regulated? And if the answer is neither, you have a great opportunity to make some money!</p>
 <!-- text end -->
-<p id='twitter'>Comments?&nbsp;
+<p id='twitter'><a href="http://ejenk.com/blog/life-in-an-incomplete-market.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/life-in-an-incomplete-market.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
 <!-- entry end -->
 <!-- entry begin -->
-<h3><a class="ablack" href="http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html">
+<h3><a class="ablack" href="why-you-shouldnt-care-about-preferences.html">
 Why You Shouldn’t Care About Preferences
 </a></h3>
-<div class="subtitle">January 29, 2014 &mdash; 
+<div class="subtitle">January 29, 2014  &mdash; 
 Evan Jenkins</div>
 <!-- text begin -->
 
@@ -161,14 +198,14 @@ In words: we should tune our consumption such that our time-discounted relative 
 
 <p>Trying to time the market and beat all of the suckers can be tempting. It can be fun. It can even be profitable! But let’s not call it rational investing. It’s gambling. Now, from a macro perspective, a bunch of loony gamblers can certainly have a deleterious effect on the market and on the wider economy. There are certainly reasons, from a policy perspective, to want to understand these effects. But that doesn’t mean we should jump in the loony bin with them! Loonies come and go, but in the long run, fundamentals drive the growth of our economy. When you invest, look at the prices and see if they seem cheap or expensive to you, not to some model that purports to know what other people are thinking. And as more people continue to forsake gambling for Vanguard index funds, the ride will only get smoother.</p>
 <!-- text end -->
-<p id='twitter'>Comments?&nbsp;
+<p id='twitter'><a href="http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
 <!-- entry end -->
 <!-- entry begin -->
-<h3><a class="ablack" href="http://ejenk.com/blog/buffetts-jackpot.html">
+<h3><a class="ablack" href="buffetts-jackpot.html">
 Buffett’s Jackpot
 </a></h3>
 <div class="subtitle">January 21, 2014  &mdash; 
@@ -206,14 +243,14 @@ So there’s our answer: the lump sum is worth $500 million, while the annuity i
 
 <p>So my advice to you if you somehow win Warren Buffett’s money: hire some good lawyers and financial advisors to find out if you can feasibly sell your annuity. If you’re lucky, you might get a bit more than the lump sum. But either way, just know that you’re not even close to being a billionaire. So you’d better get your money to work!</p>
 <!-- text end -->
-<p id='twitter'>Comments?&nbsp;
+<p id='twitter'><a href="http://ejenk.com/blog/buffetts-jackpot.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/buffetts-jackpot.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
 <!-- entry end -->
 <!-- entry begin -->
-<h3><a class="ablack" href="http://ejenk.com/blog/complete-markets-a-fairy-tale.html">
+<h3><a class="ablack" href="complete-markets-a-fairy-tale.html">
 Complete Markets: A Fairy Tale
 </a></h3>
 <div class="subtitle">January 20, 2014  &mdash; 
@@ -274,14 +311,14 @@ This result is mind-blowing and deep: what it’s saying is that in a complete m
 
 <p>Markets have gotten a bad name in recent years. The people who were supposed to be experts in markets ended up crashing the economy into the ground. If experts can’t handle market-based risk management correctly, what hope is there for the rest of us? But the beauty of markets is choice, and if we like simplicity and safety, the market will provide it. This is why Vanguard funds have become so popular. If you want to treat the stock market like a casino, you can make things arbitrarily complicated for yourself. But if you set realistic financial goals, make an honest assessment of the big idiosyncratic risks you need to hedge, and keep a handle on your consumption, living a financially stable life doesn’t need to be a big chore. And I’m optimistic that technological advances and social progress will continue to broaden access to the power of markets and help people live better lives.</p>
 <!-- text end -->
-<p id='twitter'>Comments?&nbsp;
+<p id='twitter'><a href="http://ejenk.com/blog/complete-markets-a-fairy-tale.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/complete-markets-a-fairy-tale.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
 <!-- entry end -->
 <!-- entry begin -->
-<h3><a class="ablack" href="http://ejenk.com/blog/what-is-finance.html">
+<h3><a class="ablack" href="what-is-finance.html">
 What Is Finance?
 </a></h3>
 <div class="subtitle">January 14, 2014  &mdash; 
@@ -347,15 +384,16 @@ What this equation says is that the <em>price</em> \(p_t\) of an asset at time \
 
 <p>At heart, I’m an idealist. That’s why I’ve spent most of this post giving my aspirational view of what finance is, or rather, what I want finance to be. But I’m willing to get down and dirty with the gamblers not just to pay the bills, but more importantly to see how the financial system really works. I’ll probably spend quite a few more blog posts riffing on the “what is finance” theme, since if I haven’t made it clear over the past 2,600 words, I’m still pretty hazy on the concept. I hope you’ll stick with me to see if I ever figure it out!</p>
 <!-- text end -->
-<p id='twitter'>Comments?&nbsp;
+<p id='twitter'><a href="http://ejenk.com/blog/what-is-finance.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/what-is-finance.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
 <!-- entry end -->
-<div id="all_posts"><a href="all_posts.html">View more posts</a> &mdash; <a href="feed.rss">Subscribe</a></div>
+<div id="all_posts"><a href="all_posts.html">View more posts</a> &mdash; <a href="all_tags.html">All tags</a> &mdash; <a href="feed.rss">Subscribe</a></div>
 </div>
-<div id="footer">CC by-nc-nd <a href="http://ejenk.com/">Evan Jenkins</a> &mdash; <a href="mailto:ejenk&#64;ejenk&#46;com">ejenk&#64;ejenk&#46;com</a></div>
+<div id="footer">CC by-nc-nd <a href="http://ejenk.com/">Evan Jenkins</a> &mdash; <a href="mailto:ejenk&#64;ejenk&#46;com">ejenk&#64;ejenk&#46;com</a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
 </div></div>
 <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
