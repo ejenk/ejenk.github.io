@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>Why Do People Trade?</title>
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-47261387-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+</head><body>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="http://ejenk.com/blog">The Market Completionist</a></h1>
+<div id="description">Thoughts on finance, economics, and beyond</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<!-- entry begin -->
+<h3><a class="ablack" href="why-do-people-trade.html">
+Why Do People Trade?
+</a></h3>
+<div class="subtitle">April 04, 2014 &mdash;
+Evan Jenkins</div>
+<!-- text begin -->
+
+<p>There’s been a big brouhaha lately over the new Michael Lewis book, <em>Flash Boys</em>, which paints a picture of nefarious high-frequency traders swindling honest investors out of precious pennies every time they trade. I don’t feel I have much to contribute to the is-HFT-good-or-bad debate because I know very little about the actual mechanics of trading, which are necessary to understand what’s actually going on. Rather, I want to tackle a more fundamental misconception at the center of many people’s arguments, namely, the role that trading plays in the markets.</p>
+
+<hr />
+
+<p>As I’ve mentioned several times before, you can’t go too wrong as an individual simply putting your money in a Vanguard total stock market index fund. Now, putting money in such a fund itself requires an act of trading, even if you’re buying into a mutual fund instead of an ETF: Vanguard needs to purchase more shares of stock to cover your investment. But once your money’s in there, no more trading needs to take place. There’s no need to “rebalance” a value-weighted portfolio of stocks, as the weighting of each stock is proportional to its price.</p>
+
+<p>Even more complicated investment propositions should involve surprisingly little trading, in principle. One common (though possibly misguided) investment trope is that one should keep a constant ratio of stocks to bonds, say 60–40. If the value of your stocks go up relative to your bonds, you should “rebalance” by selling stocks and buying bonds. But now imagine that <em>everybody</em> is taking this advice. If stocks go up relative to bonds, then everybody is going to want to sell stocks and buy bonds. But that means nobody wants to buy stocks and sell bonds! So the price of stocks will have to drop, and the price of bonds will have to rise until the market clears, which happens, you guessed it, when everybody’s back to 60–40. So in fact, no trading ever takes place!</p>
+
+<p>This story (which I should attribute, like most of my finance knowledge, to John Cochrane) highlights the fundamental misconception many people have about markets, that trading drives price changes. When the market goes up, the finance media explains it as people buying, and when the market goes down, it’s people selling. But this is transparently absurd: every transaction involves one buyer and one seller! No matter how the market does, the amount of stock bought is equal to the amount of stock sold. Indeed, there’s no reason whatsoever that price changes need to involve trading whatsoever. In a truly efficient market, if information comes in that affects the price of a stock, everybody should immediately update their quote values. If you learn that a stock that was trading at $20 is suddenly worth $30, you’re not going to find somebody who’s going to sell it to you at $21, even if they would have a second ago.</p>
+
+<hr />
+
+<p>Let’s bring in some empirical evidence. A <a href="http://faculty.chicagobooth.edu/john.cochrane/teaching/35150_advanced_investments/brandt_et_al_price_discovery_jf.pdf">2004 paper by Brandt and Kavajecz</a> analyzes what drives movement in US treasury yields. First, they cite previous research that the largest changes happen immediately following scheduled macroeconomic announcements. Notably, these changes happen instantly, without any trading. This makes sense: everybody knows these announcements are going to happen in advance, so nobody’s going to leave stale quotes around to get sniped once the announcement is made. After the announcement, market participants can enter new quotes at a new price level.</p>
+
+<p>Brandt and Kavajecz want to explain what causes changes in prices at other times. The mechanism they propose is called <em>price discovery</em>. The idea is based on the existence of <em>information traders</em>: people who have private information relevant to the market and trade based on this information. Information traders have a reason to trade: they know something you don’t! Now, just because somebody is trading doesn’t mean that they’re an information trader. Maybe they’re a noise trader, just trading for kicks (or perhaps some slightly more legitimate reason, like providing liquidity).</p>
+
+<p>Now, if an information trader wants to buy, that should tell you that the price should probably be higher than you previously thought it was. But if a noise trader wants to buy, that doesn’t really tell you anything. So how can you tell when information traders are at work? On net, we should expect noise traders to have no preferred direction. But information traders will likely be biased towards buying or selling, depending on the information they have. So we can recognize information traders buy when there’s a net surplus of buyers or sellers, and adjust our prices accordingly.</p>
+
+<p>“But wait!” you object. “You told us that the number of buyers always equals the number of sellers!” Indeed. But when we have access to <em>orderflow information</em>, we can see who initiated the trade. This allows us to see when there is a surfeit of “active” buyers (and hence “passive”) sellers, or the opposite. Either case should be a sign that people are trading on some information, and we should update our price accordingly. Notice that this price discovery mechanism doesn’t require much trading: the information traders trade, but nobody else needs to trade to make the price change.</p>
+
+<p>Brandt and Kavajecz show that price changes in the US treasury market, aside from those coinciding with macroeconomic announcements, are largely driven by this orderflow information, which is strong evidence for the price discovery hypothesis. They note that there is an alternative explanation for such a correlation, namely, that there could be a <em>liquidity premium</em>: when lots of people want to buy, sellers need to be incentivized with higher prices. This hypothesis does not, however, fit the data: notably, we should expect price changes due to liquidity premiums to be temporary, whereas we do not in fact see short-term reversion for the price changes that correspond to orderflow imbalances.</p>
+
+<hr />
+
+<p>One of the mysteries of financial markets is why there’s so much trading going on. If you have information, you should certainly try to trade on it, but mechanisms like price discovery and liquidity premiums (which should play a more significant role in markets less liquid than US treasuries) should prevent you from getting very far with it. Efficient markets don’t need a whole lot of trading to be efficient. And that’s how it should be! Rational traders should only be trading with each other if their relative risk exposures have changed, which really shouldn’t happen with great frequency. If somebody wants to trade with you, you should take it as a warning sign: they probably know something you don’t!</p>
+
+<p>Next time somebody gets worked up about high-frequency trading, you should sit back and smile. You, my rational utility-maximizing friend, don’t need to do any trading at all.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/why-do-people-trade.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/why-do-people-trade.html"
+data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+<!-- entry end -->
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'ejenk'; // required: replace example with your forum shortname
+
+/* * * DONT EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div id="footer">CC by-nc-nd <a href="http://ejenk.com/">Evan Jenkins</a> &mdash; <a href="mailto:ejenk&#64;ejenk&#46;com">ejenk&#64;ejenk&#46;com</a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'ejenk'; // required: replace example with your forum shortname
+
+/* * * DONT EDIT BELOW THIS LINE * * */
+(function () {
+var s = document.createElement("script"); s.async = true;
+s.type = "text/javascript";
+s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+(document.getElementsByTagName("HEAD")[0] || document.getElementsByTagName("BODY")[0]).appendChild(s);
+}());
+</script>
+</body></html>
