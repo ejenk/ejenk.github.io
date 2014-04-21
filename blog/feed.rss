@@ -2,9 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Tue, 15 Apr 2014 20:29:51 -0500</lastBuildDate>
-<pubDate>Tue, 15 Apr 2014 20:29:51 -0500</pubDate>
+<lastBuildDate>Mon, 21 Apr 2014 13:52:38 -0500</lastBuildDate>
+<pubDate>Mon, 21 Apr 2014 13:52:38 -0500</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+The Capital Asset Pricing Model Is Not a Pricing Model
+</title><description><![CDATA[
+
+<p>The Capital Asset Pricing Model (CAPM), which I discussed briefly in <a href="the-capm-and-facebook-when-up-is-down.html">a previous post</a>, says that the expected excess return of an asset is proportional to its <script type="math/tex">\beta</script> on the excess return of the market portfolio, or more precisely,</p>
+
+<script type="math/tex; mode=display">E(R^{ei}) = \beta_{i,m} E(R^{em}).</script>
+
+<p>One catchy way people tend to remember this is that the idiosyncratic volatility of a security doesn’t matter, only its market beta. But this is a vacuous statement: the idiosyncratic volatility is by definition a mean-zero quantity, so when we take expectations, it vanishes! In fact, the CAPM says nothing about the idiosyncratic <em>volatility</em>; rather, it says that the idiosyncratic <em>mean</em> <script type="math/tex">\alpha</script> is zero. Moreover, our catchy slogan directly contradicts one of the things we learn early on in our asset pricing careers, which is that, given that investors have some level of risk-aversion, increasing volatility should lower prices. </p>
+
+<p>The confusion here comes from the fact that the CAPM, in the way it is usually stated, is <em>not a pricing model</em>: it’s a model of expected returns. And expected returns by themselves don’t really tell you anything about what prices should be: you need some absolute information like future dividends to anchor expectations to an absolute price. Indeed, price, as I explained in <a href="what-is-finance.html">my very first post</a>, is equal to the expected discounted payoff, that is,</p>
+
+<script type="math/tex; mode=display">P_t = E_t(m_{t + 1} x_{t + 1}) = E_t(m_{t + 1} (R_{t + 1}P_t)).</script>
+
+<p>Notice that the price <script type="math/tex">P_t</script> cancels once we write the payoff <script type="math/tex">x_{t + 1}</script> in terms of the return, so we can’t really use information about returns alone to say anything about price.</p>
+
+<p>So what does the CAPM say about prices? A lot, it turns out. This is because the condition <script type="math/tex">\alpha = 0</script> is equivalent to saying that the market portfolio is mean-variance efficient; in particular, it is the <em>tangency portfolio</em>. The weights of the market portfolio are given by market capitalization, while the weights of the tangency portfolio are given by <script type="math/tex">\Sigma^{-1} \mu</script>, where <script type="math/tex">\Sigma</script> is the covariance matrix of all assets and <script type="math/tex">\mu</script> is the vector of means. (This formulation only makes sense if the covariance matrix is nonsingular, but that’s not so important.) So the CAPM, in this form, explicitly relates the market capitalization of stocks to their means and covariances. In particular, if we add a completely idiosyncratic volatility to a single asset, this will reduce its weight in the tangency portfolio (which is just its market capitalization), and hence reduce its price.</p>
+
+<p>Given that the CAPM entirely determines prices in terms of means and covariances, why did I claim that the CAPM is not a pricing model? Because the “true” means, and especially the “true” covariances, of assets are impossible to determine from data. The beta of a stock is a reasonably stable quantity, so the CAPM works pretty well to model returns, but its price implications, while quite elegant, are not really visible in the real world.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/the-capital-asset-pricing-model-is-not-a-pricing-model.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/the-capital-asset-pricing-model-is-not-a-pricing-model.html"
+data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+]]></description><link>http://ejenk.com/blog/the-capital-asset-pricing-model-is-not-a-pricing-model.html</link>
+<guid>http://ejenk.com/blog/the-capital-asset-pricing-model-is-not-a-pricing-model.html</guid>
+<dc:creator>Evan Jenkins</dc:creator>
+<pubDate>Mon, 21 Apr 2014 13:52:37 -0500</pubDate></item>
 <item><title>
 The Perils of Growth
 </title><description><![CDATA[

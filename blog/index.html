@@ -29,6 +29,36 @@
 </div></div></div>
 <div id="divbody"><div class="content">
 <!-- entry begin -->
+<h3><a class="ablack" href="the-capital-asset-pricing-model-is-not-a-pricing-model.html">
+The Capital Asset Pricing Model Is Not a Pricing Model
+</a></h3>
+<div class="subtitle">April 21, 2014 &mdash;
+Evan Jenkins</div>
+<!-- text begin -->
+
+<p>The Capital Asset Pricing Model (CAPM), which I discussed briefly in <a href="the-capm-and-facebook-when-up-is-down.html">a previous post</a>, says that the expected excess return of an asset is proportional to its <script type="math/tex">\beta</script> on the excess return of the market portfolio, or more precisely,</p>
+
+<script type="math/tex; mode=display">E(R^{ei}) = \beta_{i,m} E(R^{em}).</script>
+
+<p>One catchy way people tend to remember this is that the idiosyncratic volatility of a security doesn’t matter, only its market beta. But this is a vacuous statement: the idiosyncratic volatility is by definition a mean-zero quantity, so when we take expectations, it vanishes! In fact, the CAPM says nothing about the idiosyncratic <em>volatility</em>; rather, it says that the idiosyncratic <em>mean</em> <script type="math/tex">\alpha</script> is zero. Moreover, our catchy slogan directly contradicts one of the things we learn early on in our asset pricing careers, which is that, given that investors have some level of risk-aversion, increasing volatility should lower prices. </p>
+
+<p>The confusion here comes from the fact that the CAPM, in the way it is usually stated, is <em>not a pricing model</em>: it’s a model of expected returns. And expected returns by themselves don’t really tell you anything about what prices should be: you need some absolute information like future dividends to anchor expectations to an absolute price. Indeed, price, as I explained in <a href="what-is-finance.html">my very first post</a>, is equal to the expected discounted payoff, that is,</p>
+
+<script type="math/tex; mode=display">P_t = E_t(m_{t + 1} x_{t + 1}) = E_t(m_{t + 1} (R_{t + 1}P_t)).</script>
+
+<p>Notice that the price <script type="math/tex">P_t</script> cancels once we write the payoff <script type="math/tex">x_{t + 1}</script> in terms of the return, so we can’t really use information about returns alone to say anything about price.</p>
+
+<p>So what does the CAPM say about prices? A lot, it turns out. This is because the condition <script type="math/tex">\alpha = 0</script> is equivalent to saying that the market portfolio is mean-variance efficient; in particular, it is the <em>tangency portfolio</em>. The weights of the market portfolio are given by market capitalization, while the weights of the tangency portfolio are given by <script type="math/tex">\Sigma^{-1} \mu</script>, where <script type="math/tex">\Sigma</script> is the covariance matrix of all assets and <script type="math/tex">\mu</script> is the vector of means. (This formulation only makes sense if the covariance matrix is nonsingular, but that’s not so important.) So the CAPM, in this form, explicitly relates the market capitalization of stocks to their means and covariances. In particular, if we add a completely idiosyncratic volatility to a single asset, this will reduce its weight in the tangency portfolio (which is just its market capitalization), and hence reduce its price.</p>
+
+<p>Given that the CAPM entirely determines prices in terms of means and covariances, why did I claim that the CAPM is not a pricing model? Because the “true” means, and especially the “true” covariances, of assets are impossible to determine from data. The beta of a stock is a reasonably stable quantity, so the CAPM works pretty well to model returns, but its price implications, while quite elegant, are not really visible in the real world.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/the-capital-asset-pricing-model-is-not-a-pricing-model.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/the-capital-asset-pricing-model-is-not-a-pricing-model.html"
+data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+<!-- entry end -->
+<!-- entry begin -->
 <h3><a class="ablack" href="the-perils-of-growth.html">
 The Perils of Growth
 </a></h3>
@@ -315,74 +345,6 @@ So there’s our answer: the lump sum is worth $500 million, while the annuity i
 <!-- text end -->
 <p id='twitter'><a href="http://ejenk.com/blog/buffetts-jackpot.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/buffetts-jackpot.html"
- data-via="ejenk"
->Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</p>
-<!-- entry end -->
-<!-- entry begin -->
-<h3><a class="ablack" href="complete-markets-a-fairy-tale.html">
-Complete Markets: A Fairy Tale
-</a></h3>
-<div class="subtitle">January 20, 2014  &mdash; 
-Evan Jenkins</div>
-<!-- text begin -->
-
-<blockquote cite="http://arielrubinstein.tau.ac.il/Rubinstein2007.pdf">
-<p>The word “model” sounds more scientific than “fable” or “fairy tale”, but I don’t see much difference between them. The author of a fable
-draws a parallel to a situation in real life and has some moral he wishes
-to impart to the reader. The fable is an imaginary situation that is
-somewhere between fantasy and reality. Any fable can be dismissed
-as being unrealistic or simplistic, but this is also the fable’s advantage.</p>
-
-<p>—Ariel Rubinstein, <a href="http://arielrubinstein.tau.ac.il/Rubinstein2007.pdf">Lecture Notes in Microeconomic Theory: The Economic Agent</a></p>
-</blockquote>
-
-<p>In <a href="/blog/what-is-finance.html">my previous post</a>, I mentioned that asset pricing was a wonderful language for storytelling. Today I’m going to tell a particularly moving story, the story of <em>complete markets</em>, which I learned in John Cochrane’s Coursera.</p>
-
-<hr />
-
-<p>Let’s go back to the main equation of asset pricing, \[p_t = E_t(m_{t + 1}x_{t + 1}).\] This says that the price I pay for an asset today is equal to its expected discounted payoff tomorrow. I stated this as a fact last time, but you should be at least a little suspicious: this is saying that for any asset you can imagine, there’s one discount factor \(m_{t + 1}\) that will price it. In other words, the same discount factor that I use to price Google stock will also work to price flood insurance. This is a bold claim! But in fact, we’ll see why it’s not really saying much at all. Let’s prove the existence of a discount factor for complete markets.</p>
-
-<p>So what’s a complete market? The idea of finance, as I envisioned it in my previous post, is that you buy assets to hedge against future risks. You accept a negative expected return on your homeowner’s insurance because on the off chance your house burns down, you’ll really need the money. A <em>complete market</em> is one in which you can hedge against any risk. Let’s make this a bit more precise. Let’s suppose there’s a large, but finite, set \(\mathcal{S} = \{s_1, s_2, \ldots, s_n\}\) of all possible states of nature at time \(t + 1\). Each state \(s_i\) has a probability \(\pi_i\) of occuring. A complete market is one in which, at time \(t\), you can buy an asset that pays \(x(s_i)\) in the state \(s_i\), where \(x: \mathcal{S} \to \mathbb{R}\) is any real-valued function on the set of states. For example, if you’re worried about your house burning down, you could buy an asset that pays out $150,000 in every state where your house burns down, and $0 otherwise. This should end up being fairly cheap, because the sum of the probabilities \(\pi_i\) of the states in which your house burns down at time \(t + 1\), which equals the total probability that your house burns down at time \(t + 1\), is small.</p>
-
-<p>The astute reader will notice that the collection of asset payoffs in a complete market forms a vector space: you have one asset for each function \(x: \mathcal{S} \to \mathbb{R}\). There’s a particularly nice basis for this vector space: for each state \(s_i\), we have the function \(\delta_i: \mathcal{S} \to \mathbb{R}\) with \[\delta_i(s_j) = \begin{cases} 1 & \text{if $j = i$,}\\ 0 & \text{if $j \neq i$.}\end{cases}\] In other words, this function represents an asset that pays us $1 if we end up in state \(s_i\), and nothing otherwise. We call \(\delta_i\) a <em>contingent claim</em> on the state \(s_i\). The collection of all contingent claims forms a basis for the vector space of payoffs: we can write any payoff \(x: \mathcal{S} \to \mathbb{R}\) as a linear combination of contingent claims: \[x = \sum_{i = 1}^n x(s_i) \delta_i.\]</p>
-
-<p>The point of identifying contingent claims as a basis is that any sensible way of pricing assets should be linear in the payoff: the price of a collection of two assets should be the sum of their prices, and the price of a scalar multiple of an asset should be the scalar multiple of that price. Without this assumption, there would be arbitrage opportunities. So to price any asset, it’s enough to know the price of each contingent claim. In other words, if the price of the contingent claim \(\delta_i\) is \(p_i\), then the price of the asset
-\[x = \sum_{i = 1}^n x(s_i) \delta_i\]
-will be
-\[p(x) = p\left(\sum_{i = 1}^n x(s_i) \delta_i\right) = \sum_{i = 1}^n x(s_i) p(\delta_i) = \sum_{i = 1}^n x(s_i) p_i.\]
-Now we do a bit of sleight of hand. We’d like to express the price of \(x\) as an expected discounted payoff. To do so, we need to introduce probabilities into the above sum. So we’ll multiply and divide each term by \(\pi_i\) and suggestively rearrange the factors:
-\[p(x) = \sum_{i = 1}^n \pi_i \frac{p_i}{\pi_i} x(s_i).\]
-So the contribution of each state to the price is the probability of the state, times the payoff of the state, discounted by a factor of \[m_i = \frac{p_i}{\pi_i}.\] So there it is, our discount factor \(m\)! I hope this result makes intuitive sense: the discount factor in a state is equal to how over- or under-priced a contingent claim on that state is compared to the probability of landing in that state.</p>
-
-<hr />
-
-<p>Now that we have the discount factor in hand, we can ask how an individual investor will act in this market. For simplicity, we’re going to assume that this individual is only alive at times \(t\) and \(t + 1\), so they’ll spend all their money while they can. This may seem like a silly assumption, but it makes the notation easier without actually losing any of the story.</p>
-
-<p>Let’s say our individual has a wealth of \(w\). What they want to do is maximize their utility \(u(c_t)\) of consuming some of that wealth now, plus their expected discounted utility \(\beta E_t(u(c_{t + 1}))\) of investing the rest to consume a time \(t + 1\). We can think of the consumption \(c_{t + 1}\) as representing the asset, called the <em>consumption claim</em>, that we invest in at time \(t\) to pay for our future consumption. We write the wealth constraint on this optimization as \[c_t + p_t(c_{t + 1}) = w.\] Notice that this optimization problem has \(n + 1\) variables: how much we consume today, and the \(n\) state weightings \(c_{t + 1}(s_i)\) of our consumption claim. We can write the price of the consumption claim in terms of these variables as \[p_t(c_{t + 1}) = \sum_{i = 1}^n c_{t + 1}(s_i) p_i.\]</p>
-
-<p>I’ll leave it as an exercise for the reader to check using Lagrange multipliers that we get maximal utility plus expected discounted utility precisely when, for each \(i\),
-\[\beta \frac{u'(c_{t + 1}(s_i))}{u'(c_t)} = m_i.\]
-This result is mind-blowing and deep: what it’s saying is that in a complete market, a rational utility-maximizer will buy assets in such a way as to make their personal discount factor, which depends on their utility function, equal to the discount factor \(m\) of the market, which was imputed from pricing information. This holds even if we put additional variables like leisure or the joys of homeownership into our utility function. A rational investor will choose to share fully in all systemic market risks and opportunities and hedge fully against their own idiosyncratic risks and opportunities. A rational investor will hedge against the loss of their house, but not try to invest countercyclically to hedge against recessions. Likewise, a rational investor should hedge, in the other direction, against getting a raise, or a local increase in housing values, but not against widespread economic booms. In an economy of rational investors, all risk and all opportunity is shared.</p>
-
-<hr />
-
-<p>Let’s step back. On the one hand, this story is crazy: it’s obviously not how the world works. People, even very smart ones, do take on idiosyncratic risks and fail to hedge idiosyncratic opportunities. But like any good fairy tale, it doesn’t matter whether or not it’s true. The point is the moral of the story. Regular people do engage in this sort of hedging. They hedge risks by carrying insurance, and they hedge prospects of future raises by borrowing and spending beyond their current means. While they might not be doing these things in a completely optimal way, they can hardly be blamed, given that complete markets and perfect information don’t really exist. What the idea of complete markets provides is a platonic ideal for how people, businesses, and governments can try to put themselves on a sound financial path.</p>
-
-<p>The story of complete markets also teaches us a very important lesson about wealth inequality: we shouldn’t simply expect poor people to pull themselves up by their bootstraps, when even the platonic ideal of a rational person will only get rich in proportion to the broader economy. Taking this idea seriously, of course, requires a somewhat broader conception of “wealth,” wherein a person who is poor in cash but rich in ability can borrow against the future earnings that ability can generate. But even if everybody were able to cash in on their future earning potential, poverty would still exist. But I’ll leave the question of how finance can deal with this problem to a future post!</p>
-
-<p>But I like the story of complete markets for a very selfish reason: it proved me right! I mentioned last time that I naïvely thought a “hedge fund” was something you used to hedge against your own idiosyncratic risks, when in fact the word “hedge” refers to systemic risks. But the complete markets story says that this is exactly the wrong way to invest! We can increase our expected utility by hedging idiosyncratic risks because those risks mean more to us than to the market as a whole. But there’s no point to trying to swim upstream against the market: the rational investor fully shares all systemic risks, albeit at a level determined by their personal risk-averseness.</p>
-
-<hr />
-
-<p>I’ve dubbed myself the Market Completionist because I believe that many (though, as I mentioned above, not all) economic problems can be transformed into the same question: <em>How do we complete this market?</em> In incomplete markets, renters have to worry about gentrification pushing them out of their homes. In incomplete markets, workers have to be worried about getting laid off. In incomplete markets, the uninsured (now fewer in number, of course) have to worry about a trip to the ER bankrupting them. Problems like these are often solved by inefficient government regulation, which obscures the true costs involved in hedging our idiosyncratic risks. Having transparent and accessible market mechanisms is virtually always going to lead to better outcomes. The irony is that the one thing the government is best at, which is redistributing wealth to those who need it, is the one thing that’s completely taboo to suggest. As a result, much of this redistribution is bundled into regulations that often end up helping a small group of people at the expense of everybody else.</p>
-
-<p>Now let me, *ahem*, hedge what I just said. There’s a good reason Complete-Market Libertopia doesn’t exist yet: markets are hard to do right! Many government safeguards against risk exist for a very good reason: having an appropriate risk-sharing market would simply be infeasible. But one doesn’t need to be a transhumanist to see that technology is making it easier and easier to have good, powerful markets. Fifty years ago, investing in the stock market meant paying a big commission to a broker to purchase paper shares of individual companies that you would then lock up in a safe. Today you can sign up on <a href="http://www.vanguard.com/">Vanguard</a>, click a few links, and own a representative portfolio of the US stock market. Fifty years ago, giving government workers pensions made total sense. These days, not so much.</p>
-
-<p>Markets have gotten a bad name in recent years. The people who were supposed to be experts in markets ended up crashing the economy into the ground. If experts can’t handle market-based risk management correctly, what hope is there for the rest of us? But the beauty of markets is choice, and if we like simplicity and safety, the market will provide it. This is why Vanguard funds have become so popular. If you want to treat the stock market like a casino, you can make things arbitrarily complicated for yourself. But if you set realistic financial goals, make an honest assessment of the big idiosyncratic risks you need to hedge, and keep a handle on your consumption, living a financially stable life doesn’t need to be a big chore. And I’m optimistic that technological advances and social progress will continue to broaden access to the power of markets and help people live better lives.</p>
-<!-- text end -->
-<p id='twitter'><a href="http://ejenk.com/blog/complete-markets-a-fairy-tale.html#disqus_thread">Comments?</a> &nbsp;
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/complete-markets-a-fairy-tale.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
