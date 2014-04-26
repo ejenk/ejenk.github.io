@@ -2,9 +2,124 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Mon, 21 Apr 2014 13:52:38 -0500</lastBuildDate>
-<pubDate>Mon, 21 Apr 2014 13:52:38 -0500</pubDate>
+<lastBuildDate>Sat, 26 Apr 2014 02:40:25 -0500</lastBuildDate>
+<pubDate>Sat, 26 Apr 2014 02:40:25 -0500</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Why Dependently Typed Programming Will (One Day) Rock Your World
+</title><description><![CDATA[
+
+<p>You can #timestamp it, folks. I’ve seen the future, and it’s dependently typed. We won’t merely <a href="https://medium.com/architecting-a-life/fee8f3ee97a0">teach the homeless to code</a>. Rather, <a href="http://www.imdb.com/title/tt0415978/">me and you and everyone we know</a> will have a whole new framework in which to think, learn, and interact with the world. When the day comes to start running software on our brains, we’ll only need to upload one program: a type checker.</p>
+
+<p>I know what you’re thinking: he’s totally lost it. I was like you once. My eyes were closed to the endless possibilities of dependent types. But don’t worry, I’m here to awaken you.</p>
+
+<hr />
+
+<p>All right, what you’re <em>actually</em> thinking, assuming you’re still reading this, is “what the heck are dependent types, and why is this man getting so unreasonably worked up about them?” I will try to contain my mælstrom of emotion long enough to answer. I’m going to be incredibly vague and probably wrong. Deal with it.</p>
+
+<p>Programming languages can be roughly divided into two classes: imperative languages and functional languages. In an imperative language, you tell the computer what sequence of steps it should take to solve a given problem. In a functional language, you describe the problem to the computer, and it solves it for you. (I did say this was going to be incredibly vague and probably wrong!) Now, you might think that the second way is the way to go because the first way requires you to do the hard work of figuring out how to solve the problem. Let’s have the computer do that, right?</p>
+
+<p>The problem is that like your in-laws, computers are hard to talk to. The languages they speak tend to have limited expressivity. Describing how to solve a problem step-by-step doesn’t require expressing very much (do this, then do that, carry the 2, mumble grumble), the questions we want the computer to help us answer, if they’re at all interesting, tend to be much grander in scope: we might be trying to answer questions that are out in the <em>real world</em>. As scientists (and even as regular people), we greatly simplify the real world with models, but even describing your model to a computer can be hard because everything needs to be made very precise. And while it is unquestionably a Good Thing™ to make your models precise, doing so in the context of a computer language can be a tortuous process: it’s easy to get lost in the process of translation and not realize when we’ve made a conceptual error.</p>
+
+<p>This is the fundamental flaw with most programming languages, particularly the functional kind. The process of honing a model should be edifying, but instead we are forced to translate the beautiful poetry that pours out of our brains into a grunty computer tongue. Yes, many people have gotten very good at this process! But I think they are good at it in spite of the tools they’re using. What we really need is a programming language with <a href="http://languagelog.ldc.upenn.edu/nll/?p=1081">a word for X</a>, where X is a concept relevant to the problem at hand. We need a programming language that will chide us not just when we’ve made a grammatical error but also when we’ve said something whose meaning is not quite right, like “vaccines cause autism.” In other words, we want the computer to understand not just our syntax, but our semantics.</p>
+
+<hr />
+
+<p>Now I need to tell you about types. In procedural languages, we (typically) have the notion of a data type, which is just a label we attach to pieces of data that say what type of data they are. So we might attach the label <code>int</code> (short for integer) to the data <code>8</code>, or the label <code>string</code> to the data <code>"Hello, world!"</code>. If you’re lucky, your procedural language will care enough about types to tell you when you’ve done something silly with them: it’ll OK adding <code>8</code> and <code>4</code>, but not adding <code>8</code> and <code>"Hello, world!"</code> But it will also OK dividing <code>8</code> by <code>0</code>. Note that I am talking here about <em>compile-time behavior</em>. When you actually run your program that divides <code>8</code> by <code>0</code>, the universe will implode. (As we all know, that’s what happens when you try to divide by zero.)</p>
+
+<p>If you’re a smart cookie, you might try to prevent the cessation of existence itself by writing your own dividing function that checks first to see if you’re trying to divide by zero. Here’s some pseudo-code:</p>
+
+<pre><code>float myDivide(float a, float b) { 
+	if (b == 0)
+		return ???;
+	else
+		return a / b;
+}
+</code></pre>
+
+<p>The function, <code>myDivide</code>, takes two floating-point numbers <code>a</code> and <code>b</code>, and returns their quotient, which is another floating point number. We want to check first that <code>b</code> isn’t zero before dividing them. The problem here is that we don’t know what the function should output if <code>b</code> does happen to be zero. The function has to output some floating point number! Now, if we’re lazy, we might just pick some number to output in this case, like <code>0</code>. After all, we’re just trying to prevent the universe imploding here: we don’t actually plan on dividing by zero and then trying to use the number we get out of it! The problem, of course, is that we might not realize we’re trying to divide by zero. If we are, then something’s definitely wrong, and we want to know about it!</p>
+
+<p>At the heart of the matter is the fact that the mathematical operation we’re trying to implement, division, doesn’t just take two numbers <code>a</code> and <code>b</code> and output a third. We have to be precise, remember? It takes a number <code>a</code> and a <em>non-zero number</em> <code>b</code>, and outputs a third number. So what we can do is create a new type, nonzerofloat, to represent any floating point number that isn’t 0. Then, we can just define our function as follows:</p>
+
+<pre><code>float myDivide(float a, nonzerofloat b) { 
+	return a / nzfloattofloat(b);
+}
+</code></pre>
+
+<p>Here, <code>nzfloattofloat</code> is an auxiliary function that takes as input a <code>nonzerofloat</code> and outputs that number as a <code>float</code>. Now, if we try to do <code>myDivide(8, 0)</code>, the compiler will yell at us because 0 doesn’t have type <code>nonzerofloat</code>. What we’ve done here is to increase the expressiveness of the type system: an error that would’ve imploded the universe at runtime is now caught by the type checker.</p>
+
+<p>This is solution 1 (of an eventual 3) to the divides-by-zero problem. And to be honest, it stinks. Why? Because if your program is doing some highfalutin computations, you’re not just going to be dividing explicit numbers. You’re going to need to divide the result of one computation by the result of another computation. And how do you know the result of that other computation isn’t zero? The type checker certainly doesn’t. And you can’t even do something like</p>
+
+<pre><code>if (bar != 0) baz = myDivide(foo, bar);
+</code></pre>
+
+<p>because the type checker can only check types; it doesn’t have access to the computation <code>bar != 0</code> because that computation won’t be performed until the program is run. We need to do better.</p>
+
+<hr />
+
+<p>Functional programming languages up the game by using types to describe not just data but functions as well. So the function</p>
+
+<pre><code>int plusOne(int a) {
+	return a + 1;
+}
+</code></pre>
+
+<p>which takes an <code>int</code> and outputs another <code>int</code> will itself have the type <code>int -&gt; int</code>.</p>
+
+<p>Why is this useful? One reason is that it allows us, in a fancy-pants language like <a href="http://haskell.org/">Haskell</a>, to instantiate our functions inside various computational contexts, or <em>monads</em> as they are called to scare you. For example, one computational context is lists. A list <code>[2, 3, 4]</code> of integers will have a type <code>[int]</code> or <code>list int</code>. We can also apply the list <em>functor</em> to our function <code>plusOne</code>. So while <code>plusOne</code> had type <code>int -&gt; int</code>, the function <code>[plusOne]</code> has type <code>[int] -&gt; [int]</code>. And it does exactly what you think it should: <code>[plusOne]([2, 3, 4]) = [3, 4, 5]</code>. </p>
+
+<p>But the functoriality isn’t why monads are interesting. I called lists a computational context, but come on, you can do that with a for loop. The interesting part of lists is that they can represent <em>non-deterministic computations</em>. For instance, we might want to define a “function” that takes an integer and returns a proper divisor of that integer. Now, this isn’t really a function between integers, because a number can have many divisors. But we can define a function <code>divisor</code> of type <code>int -&gt; [int]</code> that returns the list of all divisors. Now I might want to chain together a number of such “non-deterministic functions” into a larger non-deterministic computation. Let’s say I want to pick a digit of a divisor of a number. I have the <code>divisor</code> function that sends a number to its list of divisors, and then the <code>digit</code> function that sends a number to its list of digits, both of type <code>int -&gt; [int]</code>. Now, I can’t compose these two functions directly, because the output of <code>divisor</code> is of type <code>[int]</code> while the input of <code>digit</code> is of type <code>int</code>. But if I do what I did with <code>plusOne</code> above, I can feed the output of <code>divisor</code> into the function <code>[digit]: [int] -&gt; [[int]]</code> that takes a list of integers and returns a <em>list of lists of digits</em>. The last step is to concatenate all these lists of digits to be left with a single list.</p>
+
+<p>Whew. Let’s go back to division. One of the simplest Monads is the <code>Maybe</code> monad. You can think of it as a list with either 0 or 1 element: something of type <code>Maybe Int</code> is either a 1-element list like <code>[4]</code> or the empty list <code>[]</code>. Whereas the list monad allowed us to describe general non-deterministic computations, the Maybe monad allows us to describe computations either have a definite answer or no answer. Like dividing by zero!</p>
+
+<pre><code>(Maybe float) myDivide2(float a, float b) {
+	if (b == 0)
+		return [];
+	else
+		return [a / b];
+}
+</code></pre>
+
+<p>This looks a lot like our original attempt, but now we have a separate symbol to return in the case of division by zero. What’s more, functoriality lets us chain this Maybe-function together with ordinary functions, and our fancy concatenation procedure (called “binding”) lets us chain this Maybe-function with other Maybe-functions.</p>
+
+<p>So this is our second solution. It’s not bad, I guess. Why am I not enthused? Because at the end of whatever grand computation we do, we’ll <em>maybe</em> have an answer. We still won’t know until we actually run the program! While this is undoubtedly more graceful than allowing the universe to implode, it still leaves a sour taste in my mouth. All we’ve really done is built a fancy machine for propagating the fact that we screwed up throughout the rest of our program. We might as well just interrupt our program on dividing by zero, which is how procedural languages handle things.</p>
+
+<hr />
+
+<p>In a procedural language, the type checker just knows about data types. Any sort of error handling or more enlightened analysis of what’s going on needs to be inserted in a very <em>ad hoc</em> manner. In a functional language, the type checker knows about function types. This lets Haskell programmers do very fancy things to protect the universe from implosion, but not only can this become very hard to understand once we start putting monads in monads, it also ultimately doesn’t really help us: we still need to run the program to observe that the computation fails somewhere and then figure out what happened.</p>
+
+<p>The problem with all of these programming languages is that they don’t get us. They don’t get what we’re trying to do. We never actually want to divide by zero. If we want to divide by something, we have a reason to believe that it’s nonzero. What we need to do is to make our beautiful brain poetry, our reason to believe that what we’re dividing by is nonzero, precise. We need a <em>proof</em>. Without further ado, here’s our final, most glorious division function:</p>
+
+<pre><code>float myDivide3(float a, float b, proof(b != 0) p) {
+	return a / b;
+}
+</code></pre>
+
+<p>What’s going on here? Our function takes three arguments now: our old friends <code>a</code> and <code>b</code>, together with a new guy, <code>p</code>. This new guy is a proof that <code>b</code> is nonzero, and its type <em>depends</em> on the value of <code>b</code>. This means that whenever I call this function, I need to provide together with <code>a</code> and <code>b</code> a proof that <code>b</code> isn’t zero. This may seem cumbersome, but like eating our vegetables, it’s good for us: it makes us clarify why we think we can divide by <code>b</code> at all. If you can’t do that, you have no business dividing!</p>
+
+<p>The interior of this function is a lie, but a suggestive one. I wanted to make it clear that this function will always return <code>a / b</code>. Always. No maybes, no world imploding; we’re going to get a real, honest floating point number out of this function every time. In reality, the interior of our function will be some implementation of a division algorithm, which will use the fact that <code>b != 0</code> to show that the algorithm terminates.</p>
+
+<p>Allowing dependent types is the final piece of the puzzle. In a dependently typed programming language, a program isn’t just a program, it’s a computer-verified proof that your program will terminate. The language of dependent type theory allows us to express all of our beautiful thoughts about why the pieces of our model fit together the way we think they do. We might, in the process, discover that things don’t actually fit together right: the type checker will growl at us if they don’t. This can be tough if you’re just learning a language. But look at the upside: <em>it won’t let us write bad code</em>!</p>
+
+<hr />
+
+<p>So why do I think that dependently typed programming is insanely great? It has to do with how we reason, and how we can learn to reason better. I’ve observed, teaching mathematics, that many of the fundamental errors students make are type errors. For instance, a beginning linear algebra student might try to find a subspace of a single vector. (Qiaochu Yuan has a <a href="http://qchu.wordpress.com/2013/05/28/the-type-system-of-mathematics/">very nice post</a> expounding on these sorts of errors.) It’s tempting, as a teacher, to ignore milder forms of such errors (like mixing up subspaces and bases of subspaces) when students can churn out answers that are at least identifiably correct. But type errors are at the very least a strong indication that there’s some conceptual misunderstanding. I’ve often felt that mathematics education could be greatly improved by implementing stronger typing in our teaching, making clear what sorts of operations can be performed on what sorts of objects.</p>
+
+<p>Dependent type theory takes this idea and runs with it. Type errors are not just red flags: in a sufficiently well-specified theory, <em>all errors are type errors</em>. Of course, I’m excluding routine mistakes like arithmetic errors, but those are the least important kind now that we have computers to do routine calculations for us. Rather, reasoning within the type theory of mathematics helps prevent us from making conceptual errors. </p>
+
+<p>If teaching dependent type theory to schoolchildren seems like a bit of a stretch, it is. But the beautiful thing about dependent type theory is that it is expressive enough to express much simpler languages. One such language currently under development is AML, a modeling language for actuaries. By the end of <a href="http://itu.dk/people/drc/pubs/actulus-is-eud-2013.pdf">this brief overview of AML</a>, I was ready to jump up and down on the table. Why? Because <em>money is a dependent type</em>! It depends on time! It doesn’t make sense to add, compare, or otherwise mix two different sources of money unless they’re discounted to the same time. This is an error that’s easy to make when reasoning about money if you’re not careful. But in AML, it’s a type error: you just can’t do it!</p>
+
+<p>After reading that, I was ready to turn everything into a type error. Make a chart with misleading axes? Type error! Use massively bloated animated GIFs instead of HTML5 video? Type error, my friend! What a wonderfully refreshing view of the world. Since deciding to leave the friendly confines of academia and search for a real job, I’ve tried to find a programming language to call my own. Each one just didn’t feel quite right until I hit upon <a href="http://idris-lang.org/">Idris</a>, a dependently typed language with a Haskell-like syntax. Finally, here was a language that could think as I do. Idris, you <em>get</em> me. And while Idris is still in its early stages, I don’t think the day is too far off when we’ll be using Idris, or a language like it, or a language created with it, to do mathematics and science and statistics and learning and living and loving. And that day will be awesome.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/why-dependently-typed-programming-will-one-day-rock-your-world.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/why-dependently-typed-programming-will-one-day-rock-your-world.html"
+data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+]]></description><link>http://ejenk.com/blog/why-dependently-typed-programming-will-one-day-rock-your-world.html</link>
+<guid>http://ejenk.com/blog/why-dependently-typed-programming-will-one-day-rock-your-world.html</guid>
+<dc:creator>Evan Jenkins</dc:creator>
+<pubDate>Sat, 26 Apr 2014 02:10:00 -0500</pubDate></item>
 <item><title>
 The Capital Asset Pricing Model Is Not a Pricing Model
 </title><description><![CDATA[
@@ -385,76 +500,4 @@ This result is mind-blowing and deep: what it’s saying is that in a complete m
 <guid>http://ejenk.com/blog/complete-markets-a-fairy-tale.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
 <pubDate>Mon, 20 Jan 2014 00:00:00 -0600</pubDate></item>
-<item><title>
-What Is Finance?
-</title><description><![CDATA[
-
-<p>Last spring, I was trying to figure out what to do with my life. For many years, I had been operating on autopilot: I was going to finish my PhD and spend the rest of my days in the secluded comfort of the ivory tower, researching and teaching mathematics, the subject that had been coursing through my veins from infancy. I was slow to catch on to the reality that I was not enjoying my research, not enjoying my teaching, and increasingly unable to see a future where I would be enjoying those things. I won’t torture you with the hows and whys, but I had reached a dead end.</p>
-
-<p>It seems almost trite that I decided to pursue finance. After all, finance is the perfect industry for somebody with high-powered academic credentials and not a single clue. At least, it was before 2008. These days, fallen academics are increasingly rushing to the tech world as financial firms are operating with less abandon than one might be led to believe. As a result, I probably come off as even more clueless than I actually am: if I want to be a quant, I should probably hop in a time machine.</p>
-
-<p>But for some reason, finance beckoned to me in a way tech never did. I was becoming increasingly aware of the ways in which the good and the bad in the world could be explained by economic considerations. From the state of our built environment, which I had become <a href="http://letthemidwaybloom.wordpress.com/">very passionate about</a>, to global warming, economics was, to paraphrase Homer Simpson, the cause of, and solution to, all of life’s problems.</p>
-
-<p>Finance, as I understood the term, had something to do with economics, so naturally I was curious. But there was one simple question that I found surprisingly difficult to answer: What is finance?</p>
-
-<hr />
-
-<p>My first inkling of what finance is came from arguing with people about the cult of homeownership following the collapse of the housing bubble. We tend to massively subsidize owning a home, both on the national level through the mortgage interest tax deduction, and on the local level through <a href="http://marketurbanism.com/2012/07/01/why-do-condos-even-exist/">tax codes and various regulations</a>. Here’s a little libertarian koan for you: if homeownership is so important, why does the government have to subsidize it?</p>
-
-<p>People tend to cite two factors in favor of homeownership. First, they say, buying a home is an investment. Your mortgage payments go to owning something, whereas you’ll never see your rental payments again. We subsidize homeownership in order to encourage good investment. Second, homeowners will care more about their community because they have more invested in it. If your community improves, the value of your house will go up, which is good for you. On the other hand, renters might oppose improvements for fear that their rent will go up. So homeownership is worth subsidizing because it creates positive externalities for the community.</p>
-
-<p>Let’s deconstruct these arguments one at a time. The first can be pretty easily dispatched with. A home is a <em>terrible</em> investment for most people. Let’s first note that it’s a highly leveraged one unless you choose to buy outright. Traditionally, people put 20% down, which means leveraging 4-to-1. During in the housing bubble, it became fashionable to put less, or even none down. But even the baseline 4-to-1 is still quite leveraged: a 10% drop in your home’s value will halve your equity, and a 20% drop will annihilate it. Unless you truly believe the now-disproven notion that home prices will keep rising forever, a 20%-down mortgage is a massively risky investment.</p>
-
-<p>Even ignoring the extra risk involved in leveraging, the returns look somewhat suspect as well. There are two parts to your investment: the land your home sits on, and the building itself. (We’ll ignore the puzzle of condos, where you in principle own a share of the land, but in practice have no way to cash in on it.) Land is certainly something that can appreciate greatly in value if you live in a desirable location: supply in your area is fixed, and demand will keep rising as long as your location stays desirable. Unfortunately, the desirability of your location is very likely positively correlated to your income. If you’re living in an industry hotbed, your job is very likely secure, so you don’t need your investment to rise as much. But if things take a turn for the worse, you might lose your job, only to discover that your house isn’t worth the paper your mortgage is printed on. In short, unless your occupation happens to be terribly countercyclical, the land where you live is exactly the kind of investment you don’t want to be highly leveraged in.</p>
-
-<p>The other portion of your investment is the building itself. This isn’t so much an investment as a liability. Buildings, particularly ones that are lived in, need to be maintained, insured, and kept up to code. Put that on top of the land, which as we saw was already a dubious investment, and you just have something awful.</p>
-
-<p>But what about renting? Isn’t it still true that when you buy a home, you should at least see <i>some</i> of that money back, whereas rental money is gone forever? To answer that, we have to understand exactly what your rental money is paying for. Your landlord owns the land your building is on. Land, as we said, can potentially be a good investment. So why bother maintaining a building at all? To amortize construction costs and pay for maintenance, insurance, taxes, and utilities, your landlord needs something in return. Those costs are precisely the costs you pay for when you own your home, but a landlord can likely manage them much more efficiently than you can! In sparsely populated areas, the overhead can be too great, which explains why you mostly see rentals in urban areas. But really, the only reason that we should see rental costs above what you might expect to pay owning a home (modulo perhaps the amount of DIY labor you wish to put in) is because we do so heavily subsidize owning over renting!</p>
-
-<p>Now that we’ve broken down the investment myth using a bit of financial thinking, let’s move to the community myth. This one is a bit trickier because there seems to be a kernel of truth to it. Renters certainly don’t want their rents to go up. While in principle, a homeowner should want the value of their house to go up, this also means that their property taxes go up. Since most people tend to think very short-term about their finances (even though the homeowner mindset is supposed to be a hedge against this), aversion to higher taxes probably tends to lump homeowners in the same camp as renters.</p>
-
-<p>This is not good! People should be able to benefit from improvements to their community. They should want progress, development, and wealth. But both this thought exercise and real-world experience tells us that renters and owners alike tend to oppose such niceties. But at least we’ve debunked the community myth: renters and owners alike do not want to improve their communities.</p>
-
-<hr />
-
-<p>So far, we’ve used finance to make observations about how the world works, and what we’ve observed should disturb us deeply. We’ve seen that homeowners are making terrible, risky investments, and our communities are languishing because allowing communities to flourish is not in residents’ self-interest. But finance is more than just an observational tool: it is a creative framework. We can use financial reasoning not only to identify problems but to correct them.</p>
-
-<p>A very basic example of a financial solution is homeowner’s insurance. Without it, owning a home would be an even risker proposition than I’ve outlined above. People understand why they need insurance: if their home burned down without it, they’d be destitute.</p>
-
-<p>The reason insurance works is that people are willing to give up a small amount of money to avoid a big, if unlikely, risk. But in order for this deal to be profitable for the insurer, the small amount of money has to be greater than the insurer’s expected payout. Both sides are happy because you are more sensitive to the risk than the insurer, who can afford to pay to rebuild your house after a fire because they’ve been receiving premiums from lots of other people who don’t need to rebuild. Things like flood insurance are much more tricky, because floods tend to affect a lot of houses at once, so insuring a bunch of houses in the same area would expose an insurer to massive risk.</p>
-
-<p>If homeowners buy insurance to protect against losing their house in a fire, then why shouldn’t they also buy insurance to protect against the value of their house going down due to decreased demand? Indeed, a number of such schemes appeared in the wake of the housing crisis, but <a href="http://www.bizjournals.com/sanfrancisco/blog/2012/08/home-value-insurance-real-estate-venture.html?page=all">consumers didn’t bite</a> and <a href="http://www.washingtonpost.com/realestate/home-value-insurance-were-not-convinced-its-a-good-idea/2012/05/23/gJQAgMpXpU_story.html">pundits remain skeptical</a>. One reason to be very skeptical of such a product is that it suffers from the same problem as flood insurance, but worse: in 2008 we saw housing prices plummet across most of the US.</p>
-
-<p>Nevertheless, finance may still be able to provide a solution. Rather than purchasing insurance, a savvy homeowner could in principle participate in a <a href="http://www.cmegroup.com/trading/real-estate/files/spcaseshiller_fact_card.pdf">Case-Shiller Home Price Index futures market</a>. While financial derivative markets are typically only available to institutional investors, there’s no reason in principle that the power of such markets could not be brought to homeowners. Buying put options for the Case-Shiller Home Price Index is nearly equivalent to buying home value insurance, but potentially with less overhead and systemic risk.</p>
-
-<p>In the interest of keeping the length of this introductory post (relatively) short, I’ll put off a discussion of how finance can solve the more thorny community problem to a future post. But I hope that I’ve laid out the basic idea: financial instruments like insurance and futures contracts exist to hedge risks. If an investment seems too good to be true, like houses did during the bubble, it’s probably because you haven’t considered the cost of hedging all the risk. Gambling can be fun, but when it comes to how we should run our lives, it seems prudent to not allow ourselves more risk than we’re willing to bear.</p>
-
-<hr />
-
-<p>Everything I’ve said so far is what I thought finance should be. In reality, it’s largely a gambler’s world. Still, it seems, there’s value in learning to navigate this world. I heard through the Twitter grapevine that <a href="http://johnhcochrane.blogspot.com/">John Cochrane</a> was going to be teaching an asset pricing course on <a href="http://coursera.org/">Coursera</a>, so I dove in. Thanks to John’s wonderfully lucid course, I’ve learned a little bit about what finance is. There are many beautiful stories written in the language of asset pricing, so I want to start by reviewing some of the vocabulary and then move on to some simple tales.</p>
-
-<p>An asset, I believe, is something we buy that has no intrinsic value to us; all that matters is how much money it will return to us in the future. Already, this is a problematic definition, particularly when we apply it to something like a house, but even when we apply it to things like gold and Bitcoin and other investments that people tend to have more than a strict emotional detachment to. But I digress.</p>
-
-<p>The central question of asset pricing is, unsurprisingly, what is the price of an asset? The answer takes a very nice form: \[p_t = E_t(m_{t + 1}x_{t + 1}).\]
-What this equation says is that the <em>price</em> \(p_t\) of an asset at time \(t\) is equal to the expected value (using only the information we have at time \(t\)) of the <em>discounted payoff</em> at the future time \(t + 1\). The <em>payoff</em> \(x_{t + 1}\) is the value of whatever our asset has turned into. If we’re pricing a stock, for instance, we could write \[x_{t + 1} = d_{t + 1} + p_{t + 1},\] where \(d_{t + 1}\) is a <em>dividend</em> that’s paid directly to us, and \(p_{t + 1}\) is how much our stock is now worth. The <em>discount factor</em> \(m_{t + 1}\) is more mysterious. It expresses the fact that an amount of money at time \(t + 1\) might be worth less or more to us than that same amount of money at time \(t\).</p>
-
-<p>A fundamental model for the discount factor \(m_{t + 1}\) is the <em>consumption-based model</em>. In this model, \(m_{t + 1}\) splits up into the product of two factors: a <em>future discounting constant</em> \(\beta\), which describes how much we prefer money now to money later, and a <em>coefficient of relative risk aversion</em> \[\dfrac{u'(c_{t + 1})}{u'(c_t)},\] which describes how risk averse we at time \(t + 1\) relative to time \(t\). Observe that \[m_{t + 1} = \beta \dfrac{u'(c_{t + 1})}{u'(c_t)}\] is a <em>stochastic discount factor</em>: it depends on a variable, <em>consumption</em> at time \(t + 1\), that we don’t know at time \(t\), so its exact value is not known to us.</p>
-
-<p>A basic fact we can observe from this formula is that we will prefer (i.e., be willing to pay more for) assets that pay out in bad times to assets that pay out in good times. This lets us restate our explanation of why insurance works: we are willing to accept a negative expected payoff for insurance because it pays us precisely when we need it most. The insurance company, which is more or less indifferent to the state of your house, only cares that it’s getting a positive expected payoff from selling you that insurance. The market works not because the market participants have different information, but because they have differing risk aversions.</p>
-
-<p>This is the brand of finance I envisioned above: you can hedge risks by trading with somebody who is not exposed to them. Indeed, this is what I naïvely imagined a “hedge fund” to be! Instead, the “hedge” in “hedge fund” apparently refers purely to hedging drops in the market, and in practice, it’s meaningless. In practice, hedge funds aren’t trying to exploit differences between their discount factors and the composite “market” discount factor; rather, they are trying to find situations in which the basic pricing equation, \(p = E(mx)\), is wrong, assets that have for whatever reason been systemically mispriced. This explanation may yet be too kind: in the absence of mispricing, you can always gamble and try to cleverly hide the risks for as long as possible. Exploiting mispricings corrects them, and thus it serves an important function. Gambling does not. Determining who’s doing what is not, looking from the outside, an easy task.</p>
-
-<hr />
-
-<p>At heart, I’m an idealist. That’s why I’ve spent most of this post giving my aspirational view of what finance is, or rather, what I want finance to be. But I’m willing to get down and dirty with the gamblers not just to pay the bills, but more importantly to see how the financial system really works. I’ll probably spend quite a few more blog posts riffing on the “what is finance” theme, since if I haven’t made it clear over the past 2,600 words, I’m still pretty hazy on the concept. I hope you’ll stick with me to see if I ever figure it out!</p>
-<!-- text end -->
-<p id='twitter'><a href="http://ejenk.com/blog/what-is-finance.html#disqus_thread">Comments?</a> &nbsp;
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/what-is-finance.html"
- data-via="ejenk"
->Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</p>
-]]></description><link>http://ejenk.com/blog/what-is-finance.html</link>
-<guid>http://ejenk.com/blog/what-is-finance.html</guid>
-<dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Tue, 14 Jan 2014 00:00:00 -0600</pubDate></item>
 </channel></rss>

@@ -29,6 +29,122 @@
 </div></div></div>
 <div id="divbody"><div class="content">
 <!-- entry begin -->
+<h3><a class="ablack" href="why-dependently-typed-programming-will-one-day-rock-your-world.html">
+Why Dependently Typed Programming Will (One Day) Rock Your World
+</a></h3>
+<div class="subtitle">April 26, 2014 &mdash;
+Evan Jenkins</div>
+<!-- text begin -->
+
+<p>You can #timestamp it, folks. I’ve seen the future, and it’s dependently typed. We won’t merely <a href="https://medium.com/architecting-a-life/fee8f3ee97a0">teach the homeless to code</a>. Rather, <a href="http://www.imdb.com/title/tt0415978/">me and you and everyone we know</a> will have a whole new framework in which to think, learn, and interact with the world. When the day comes to start running software on our brains, we’ll only need to upload one program: a type checker.</p>
+
+<p>I know what you’re thinking: he’s totally lost it. I was like you once. My eyes were closed to the endless possibilities of dependent types. But don’t worry, I’m here to awaken you.</p>
+
+<hr />
+
+<p>All right, what you’re <em>actually</em> thinking, assuming you’re still reading this, is “what the heck are dependent types, and why is this man getting so unreasonably worked up about them?” I will try to contain my mælstrom of emotion long enough to answer. I’m going to be incredibly vague and probably wrong. Deal with it.</p>
+
+<p>Programming languages can be roughly divided into two classes: imperative languages and functional languages. In an imperative language, you tell the computer what sequence of steps it should take to solve a given problem. In a functional language, you describe the problem to the computer, and it solves it for you. (I did say this was going to be incredibly vague and probably wrong!) Now, you might think that the second way is the way to go because the first way requires you to do the hard work of figuring out how to solve the problem. Let’s have the computer do that, right?</p>
+
+<p>The problem is that like your in-laws, computers are hard to talk to. The languages they speak tend to have limited expressivity. Describing how to solve a problem step-by-step doesn’t require expressing very much (do this, then do that, carry the 2, mumble grumble), the questions we want the computer to help us answer, if they’re at all interesting, tend to be much grander in scope: we might be trying to answer questions that are out in the <em>real world</em>. As scientists (and even as regular people), we greatly simplify the real world with models, but even describing your model to a computer can be hard because everything needs to be made very precise. And while it is unquestionably a Good Thing™ to make your models precise, doing so in the context of a computer language can be a tortuous process: it’s easy to get lost in the process of translation and not realize when we’ve made a conceptual error.</p>
+
+<p>This is the fundamental flaw with most programming languages, particularly the functional kind. The process of honing a model should be edifying, but instead we are forced to translate the beautiful poetry that pours out of our brains into a grunty computer tongue. Yes, many people have gotten very good at this process! But I think they are good at it in spite of the tools they’re using. What we really need is a programming language with <a href="http://languagelog.ldc.upenn.edu/nll/?p=1081">a word for X</a>, where X is a concept relevant to the problem at hand. We need a programming language that will chide us not just when we’ve made a grammatical error but also when we’ve said something whose meaning is not quite right, like “vaccines cause autism.” In other words, we want the computer to understand not just our syntax, but our semantics.</p>
+
+<hr />
+
+<p>Now I need to tell you about types. In procedural languages, we (typically) have the notion of a data type, which is just a label we attach to pieces of data that say what type of data they are. So we might attach the label <code>int</code> (short for integer) to the data <code>8</code>, or the label <code>string</code> to the data <code>"Hello, world!"</code>. If you’re lucky, your procedural language will care enough about types to tell you when you’ve done something silly with them: it’ll OK adding <code>8</code> and <code>4</code>, but not adding <code>8</code> and <code>"Hello, world!"</code> But it will also OK dividing <code>8</code> by <code>0</code>. Note that I am talking here about <em>compile-time behavior</em>. When you actually run your program that divides <code>8</code> by <code>0</code>, the universe will implode. (As we all know, that’s what happens when you try to divide by zero.)</p>
+
+<p>If you’re a smart cookie, you might try to prevent the cessation of existence itself by writing your own dividing function that checks first to see if you’re trying to divide by zero. Here’s some pseudo-code:</p>
+
+<pre><code>float myDivide(float a, float b) { 
+	if (b == 0)
+		return ???;
+	else
+		return a / b;
+}
+</code></pre>
+
+<p>The function, <code>myDivide</code>, takes two floating-point numbers <code>a</code> and <code>b</code>, and returns their quotient, which is another floating point number. We want to check first that <code>b</code> isn’t zero before dividing them. The problem here is that we don’t know what the function should output if <code>b</code> does happen to be zero. The function has to output some floating point number! Now, if we’re lazy, we might just pick some number to output in this case, like <code>0</code>. After all, we’re just trying to prevent the universe imploding here: we don’t actually plan on dividing by zero and then trying to use the number we get out of it! The problem, of course, is that we might not realize we’re trying to divide by zero. If we are, then something’s definitely wrong, and we want to know about it!</p>
+
+<p>At the heart of the matter is the fact that the mathematical operation we’re trying to implement, division, doesn’t just take two numbers <code>a</code> and <code>b</code> and output a third. We have to be precise, remember? It takes a number <code>a</code> and a <em>non-zero number</em> <code>b</code>, and outputs a third number. So what we can do is create a new type, nonzerofloat, to represent any floating point number that isn’t 0. Then, we can just define our function as follows:</p>
+
+<pre><code>float myDivide(float a, nonzerofloat b) { 
+	return a / nzfloattofloat(b);
+}
+</code></pre>
+
+<p>Here, <code>nzfloattofloat</code> is an auxiliary function that takes as input a <code>nonzerofloat</code> and outputs that number as a <code>float</code>. Now, if we try to do <code>myDivide(8, 0)</code>, the compiler will yell at us because 0 doesn’t have type <code>nonzerofloat</code>. What we’ve done here is to increase the expressiveness of the type system: an error that would’ve imploded the universe at runtime is now caught by the type checker.</p>
+
+<p>This is solution 1 (of an eventual 3) to the divides-by-zero problem. And to be honest, it stinks. Why? Because if your program is doing some highfalutin computations, you’re not just going to be dividing explicit numbers. You’re going to need to divide the result of one computation by the result of another computation. And how do you know the result of that other computation isn’t zero? The type checker certainly doesn’t. And you can’t even do something like</p>
+
+<pre><code>if (bar != 0) baz = myDivide(foo, bar);
+</code></pre>
+
+<p>because the type checker can only check types; it doesn’t have access to the computation <code>bar != 0</code> because that computation won’t be performed until the program is run. We need to do better.</p>
+
+<hr />
+
+<p>Functional programming languages up the game by using types to describe not just data but functions as well. So the function</p>
+
+<pre><code>int plusOne(int a) {
+	return a + 1;
+}
+</code></pre>
+
+<p>which takes an <code>int</code> and outputs another <code>int</code> will itself have the type <code>int -&gt; int</code>.</p>
+
+<p>Why is this useful? One reason is that it allows us, in a fancy-pants language like <a href="http://haskell.org/">Haskell</a>, to instantiate our functions inside various computational contexts, or <em>monads</em> as they are called to scare you. For example, one computational context is lists. A list <code>[2, 3, 4]</code> of integers will have a type <code>[int]</code> or <code>list int</code>. We can also apply the list <em>functor</em> to our function <code>plusOne</code>. So while <code>plusOne</code> had type <code>int -&gt; int</code>, the function <code>[plusOne]</code> has type <code>[int] -&gt; [int]</code>. And it does exactly what you think it should: <code>[plusOne]([2, 3, 4]) = [3, 4, 5]</code>. </p>
+
+<p>But the functoriality isn’t why monads are interesting. I called lists a computational context, but come on, you can do that with a for loop. The interesting part of lists is that they can represent <em>non-deterministic computations</em>. For instance, we might want to define a “function” that takes an integer and returns a proper divisor of that integer. Now, this isn’t really a function between integers, because a number can have many divisors. But we can define a function <code>divisor</code> of type <code>int -&gt; [int]</code> that returns the list of all divisors. Now I might want to chain together a number of such “non-deterministic functions” into a larger non-deterministic computation. Let’s say I want to pick a digit of a divisor of a number. I have the <code>divisor</code> function that sends a number to its list of divisors, and then the <code>digit</code> function that sends a number to its list of digits, both of type <code>int -&gt; [int]</code>. Now, I can’t compose these two functions directly, because the output of <code>divisor</code> is of type <code>[int]</code> while the input of <code>digit</code> is of type <code>int</code>. But if I do what I did with <code>plusOne</code> above, I can feed the output of <code>divisor</code> into the function <code>[digit]: [int] -&gt; [[int]]</code> that takes a list of integers and returns a <em>list of lists of digits</em>. The last step is to concatenate all these lists of digits to be left with a single list.</p>
+
+<p>Whew. Let’s go back to division. One of the simplest Monads is the <code>Maybe</code> monad. You can think of it as a list with either 0 or 1 element: something of type <code>Maybe Int</code> is either a 1-element list like <code>[4]</code> or the empty list <code>[]</code>. Whereas the list monad allowed us to describe general non-deterministic computations, the Maybe monad allows us to describe computations either have a definite answer or no answer. Like dividing by zero!</p>
+
+<pre><code>(Maybe float) myDivide2(float a, float b) {
+	if (b == 0)
+		return [];
+	else
+		return [a / b];
+}
+</code></pre>
+
+<p>This looks a lot like our original attempt, but now we have a separate symbol to return in the case of division by zero. What’s more, functoriality lets us chain this Maybe-function together with ordinary functions, and our fancy concatenation procedure (called “binding”) lets us chain this Maybe-function with other Maybe-functions.</p>
+
+<p>So this is our second solution. It’s not bad, I guess. Why am I not enthused? Because at the end of whatever grand computation we do, we’ll <em>maybe</em> have an answer. We still won’t know until we actually run the program! While this is undoubtedly more graceful than allowing the universe to implode, it still leaves a sour taste in my mouth. All we’ve really done is built a fancy machine for propagating the fact that we screwed up throughout the rest of our program. We might as well just interrupt our program on dividing by zero, which is how procedural languages handle things.</p>
+
+<hr />
+
+<p>In a procedural language, the type checker just knows about data types. Any sort of error handling or more enlightened analysis of what’s going on needs to be inserted in a very <em>ad hoc</em> manner. In a functional language, the type checker knows about function types. This lets Haskell programmers do very fancy things to protect the universe from implosion, but not only can this become very hard to understand once we start putting monads in monads, it also ultimately doesn’t really help us: we still need to run the program to observe that the computation fails somewhere and then figure out what happened.</p>
+
+<p>The problem with all of these programming languages is that they don’t get us. They don’t get what we’re trying to do. We never actually want to divide by zero. If we want to divide by something, we have a reason to believe that it’s nonzero. What we need to do is to make our beautiful brain poetry, our reason to believe that what we’re dividing by is nonzero, precise. We need a <em>proof</em>. Without further ado, here’s our final, most glorious division function:</p>
+
+<pre><code>float myDivide3(float a, float b, proof(b != 0) p) {
+	return a / b;
+}
+</code></pre>
+
+<p>What’s going on here? Our function takes three arguments now: our old friends <code>a</code> and <code>b</code>, together with a new guy, <code>p</code>. This new guy is a proof that <code>b</code> is nonzero, and its type <em>depends</em> on the value of <code>b</code>. This means that whenever I call this function, I need to provide together with <code>a</code> and <code>b</code> a proof that <code>b</code> isn’t zero. This may seem cumbersome, but like eating our vegetables, it’s good for us: it makes us clarify why we think we can divide by <code>b</code> at all. If you can’t do that, you have no business dividing!</p>
+
+<p>The interior of this function is a lie, but a suggestive one. I wanted to make it clear that this function will always return <code>a / b</code>. Always. No maybes, no world imploding; we’re going to get a real, honest floating point number out of this function every time. In reality, the interior of our function will be some implementation of a division algorithm, which will use the fact that <code>b != 0</code> to show that the algorithm terminates.</p>
+
+<p>Allowing dependent types is the final piece of the puzzle. In a dependently typed programming language, a program isn’t just a program, it’s a computer-verified proof that your program will terminate. The language of dependent type theory allows us to express all of our beautiful thoughts about why the pieces of our model fit together the way we think they do. We might, in the process, discover that things don’t actually fit together right: the type checker will growl at us if they don’t. This can be tough if you’re just learning a language. But look at the upside: <em>it won’t let us write bad code</em>!</p>
+
+<hr />
+
+<p>So why do I think that dependently typed programming is insanely great? It has to do with how we reason, and how we can learn to reason better. I’ve observed, teaching mathematics, that many of the fundamental errors students make are type errors. For instance, a beginning linear algebra student might try to find a subspace of a single vector. (Qiaochu Yuan has a <a href="http://qchu.wordpress.com/2013/05/28/the-type-system-of-mathematics/">very nice post</a> expounding on these sorts of errors.) It’s tempting, as a teacher, to ignore milder forms of such errors (like mixing up subspaces and bases of subspaces) when students can churn out answers that are at least identifiably correct. But type errors are at the very least a strong indication that there’s some conceptual misunderstanding. I’ve often felt that mathematics education could be greatly improved by implementing stronger typing in our teaching, making clear what sorts of operations can be performed on what sorts of objects.</p>
+
+<p>Dependent type theory takes this idea and runs with it. Type errors are not just red flags: in a sufficiently well-specified theory, <em>all errors are type errors</em>. Of course, I’m excluding routine mistakes like arithmetic errors, but those are the least important kind now that we have computers to do routine calculations for us. Rather, reasoning within the type theory of mathematics helps prevent us from making conceptual errors. </p>
+
+<p>If teaching dependent type theory to schoolchildren seems like a bit of a stretch, it is. But the beautiful thing about dependent type theory is that it is expressive enough to express much simpler languages. One such language currently under development is AML, a modeling language for actuaries. By the end of <a href="http://itu.dk/people/drc/pubs/actulus-is-eud-2013.pdf">this brief overview of AML</a>, I was ready to jump up and down on the table. Why? Because <em>money is a dependent type</em>! It depends on time! It doesn’t make sense to add, compare, or otherwise mix two different sources of money unless they’re discounted to the same time. This is an error that’s easy to make when reasoning about money if you’re not careful. But in AML, it’s a type error: you just can’t do it!</p>
+
+<p>After reading that, I was ready to turn everything into a type error. Make a chart with misleading axes? Type error! Use massively bloated animated GIFs instead of HTML5 video? Type error, my friend! What a wonderfully refreshing view of the world. Since deciding to leave the friendly confines of academia and search for a real job, I’ve tried to find a programming language to call my own. Each one just didn’t feel quite right until I hit upon <a href="http://idris-lang.org/">Idris</a>, a dependently typed language with a Haskell-like syntax. Finally, here was a language that could think as I do. Idris, you <em>get</em> me. And while Idris is still in its early stages, I don’t think the day is too far off when we’ll be using Idris, or a language like it, or a language created with it, to do mathematics and science and statistics and learning and living and loving. And that day will be awesome.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/why-dependently-typed-programming-will-one-day-rock-your-world.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/why-dependently-typed-programming-will-one-day-rock-your-world.html"
+data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+<!-- entry end -->
+<!-- entry begin -->
 <h3><a class="ablack" href="the-capital-asset-pricing-model-is-not-a-pricing-model.html">
 The Capital Asset Pricing Model Is Not a Pricing Model
 </a></h3>
@@ -300,51 +416,6 @@ In words: we should tune our consumption such that our time-discounted relative 
 <!-- text end -->
 <p id='twitter'><a href="http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html#disqus_thread">Comments?</a> &nbsp;
 <a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html"
- data-via="ejenk"
->Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</p>
-<!-- entry end -->
-<!-- entry begin -->
-<h3><a class="ablack" href="buffetts-jackpot.html">
-Buffett’s Jackpot
-</a></h3>
-<div class="subtitle">January 21, 2014  &mdash; 
-Evan Jenkins</div>
-<!-- text begin -->
-
-<p>A fun finance-y story making the rounds is <a href="http://dealbook.nytimes.com/2014/01/21/1-billion-for-a-perfect-n-c-a-a-bracket-courtesy-of-warren-buffett/">Warren Buffett’s offer of $1 billion</a> for filling out a perfect NCAA bracket. Most of the analysis has focused on estimating the odds of winning (the general consensus: not good). But since I’ve been on an asset pricing kick, I want to talk about the misleading values attached to giant prizes and what this prize is actually worth.</p>
-
-<p>As is the case with Powerball jackpots, Buffett’s prize is actually a choice of two prizes: if you want your full $1 billion, it will be paid out over 40 years in the form of a $25 million annual annuity. If you want a lump sum right now, you’ll have to settle for a mere $500 million. While the first choice nominally sums to $1 billion, you’re paying a huge opportunity cost to wait decades for much of that money. So which prize should you choose?</p>
-
-<p>The value of the lump sum is easy enough to calculate: you get $500 million now, so it’s worth $500 million. (I’m going to ignore taxes for most of the rest of this discussion because I don’t know enough about how taxes work. My guess is that, given a competent accountant, taxes won’t disproportionately affect one choice vs. the other.) The value of the annuity is also not too bad to calculate, if we believe our lovely asset pricing formula, \(p = E(mx)\). First, let’s see how this formula behaves for an asset that always pays out the same amount, that is, for a <em>risk-free</em> asset. If I put $1 to a risk-free one-period bond at time \(t\), what should I expect it to pay me at time \(t + 1\)? Well, since the payoff \(x_{t + 1}\) is nonrandom, we can pull it out of the conditional expectation:
-\[1 = E_t(m_{t + 1} x_{t + 1}) = x_{t + 1}E_t(m_{t + 1}),\]
-so
-\[x_{t + 1} = \frac{1}{E_t(m_{t + 1})}.\]
-The payoff \(x_{t + 1}\) is called the <em>risk-free rate</em> and is typically denoted by \(R^f\). These days, interest rates are pretty low, but the historical average risk-free rate is around 4%, that is, \(R^f = 1.04\). Since we’re talking about the next 40 years, let’s just use this number.</p>
-
-<p>So let’s look at the annuity’s payoff. It pays us $25 million each year for the next 40 years, so we can write \[x_{t + i} = d_{t + i} + p_{t + i},\]
-where
-\[d_{t + i} = \begin{cases}25 & \text{if $0 \leq i \leq 39$,}\\ 0 & \text{otherwise.}\end{cases}\]
-In other words, we can treat the payoff at time \(t + i\) as the sum of the annuity payoff \(d_{t + i}\) and the value \(p_{t + i}\) of the remaining payoffs. Assuming we get our first payment right now (so we tack it on to our starting price), our total value telescopes out as
-\begin{align*}
-25 + p_t &= 25 + E_t(m_{t + 1}x_{t + 1})\\
-&= 25 + 1.04^{-1}(25 + p_{t + 1})\\
-&= 25 + 1.04^{-1}(25 + 1.04^{-1}(25 + p_{t + 2}))\\
-&\vdots\\
-&= \sum_{i = 0}^{39} 1.04^{-i} \times 25\\
-&= \frac{1 - 1.04^{-40}}{1 - 1.04^{-1}} \times 25\\
-&\approx 515.
-\end{align*}
-So there’s our answer: the lump sum is worth $500 million, while the annuity is worth $515 million, so we should take the annuity, right?</p>
-
-<p>Not so fast. If you’re a semibillionaire with any ambition whatsoever, you’re not just going to stuff this money under your mattress (or worse, spend it!). With your newfound low risk-aversion, you’re going to want to plow your money into investments with a higher expected return than risk-free bonds. The stock market has historically returned more like 10%. Discount your annuity by 10% annually and it’s worth a measly $269 million!</p>
-
-<p>But surely your annuity is worth more than that, right? After all, our formula shows that it’s actually worth $515 million, at least to somebody. The difficulty is finding that somebody. Here’s where things get a bit hazy, at least to me. Surely some giant financial firm would be willing to trade $515 million for your stream of future payments. But I’m not sure what the tax or legal implications of this are. What you won’t be able to find is somebody willing to lend you $515 million at a 4% annual rate, unless they can be sure that the loan really is risk-free: this means they would need your stream of annuity payments as collateral, which is the same as actually owning the annuity!</p>
-
-<p>So my advice to you if you somehow win Warren Buffett’s money: hire some good lawyers and financial advisors to find out if you can feasibly sell your annuity. If you’re lucky, you might get a bit more than the lump sum. But either way, just know that you’re not even close to being a billionaire. So you’d better get your money to work!</p>
-<!-- text end -->
-<p id='twitter'><a href="http://ejenk.com/blog/buffetts-jackpot.html#disqus_thread">Comments?</a> &nbsp;
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/buffetts-jackpot.html"
  data-via="ejenk"
 >Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
