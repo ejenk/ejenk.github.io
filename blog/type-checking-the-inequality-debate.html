@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>Type Checking the Inequality Debate</title>
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-47261387-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+</script>
+</head><body>
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script></head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="http://ejenk.com/blog">The Market Completionist</a></h1>
+<div id="description">Thoughts on finance, economics, and beyond</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<!-- entry begin -->
+<h3><a class="ablack" href="type-checking-the-inequality-debate.html">
+Type Checking the Inequality Debate
+</a></h3>
+<div class="subtitle">April 30, 2014 &mdash;
+Evan Jenkins</div>
+<!-- text begin -->
+
+<blockquote>
+<p>Facts are meaningless. You can use facts to prove anything that’s even remotely true!</p>
+
+<p>—Homer J. Simpson</p>
+</blockquote>
+
+<p>I’ve already thrown in <a href="the-perils-of-growth.html">my two cents</a> on the central theory in Thomas Piketty’s <a href="http://www.vox.com/2014/4/8/5592198/the-short-guide-to-capital-in-the-21st-century">Capital in the 21st Century</a>. But I think (again, not having actually read the book) that the legacy of Capital will not be its theory or its policy prescriptions, but how it has shaped the debate on inequality. In the past, even as recently as the Occupy Wall Street movement of a few years ago, ideology took center stage. Piketty’s rise to stardom has put the spotlight on data.</p>
+
+<p>On the one hand, this is a terrific development. Ideological debates are intractable, while data can, in principle, be viewed and discussed in an objective manner. But data analysis has its own pitfalls, and if we’re not careful, our own ideological biases might seep into the data we choose to study and present. What we need is an expressive but strict framework with which to view data: expressive meaning we can uncover the truth hiding in the data, and strict meaning we won’t erroneously use the data to say something false. What we need, in other words, is <a href="why-dependently-typed-programming-will-one-day-rock-your-world.html">dependent type theory</a>.</p>
+
+<p>One common theme in data cited by those on the “left” of the inequality debate is the rising gap between the top 1% (the choice of 1% being an unfortunate vestige of Occupy that should be snuffed out ASAP) and everybody else. Consider the chart below from Christopher Ingraham’s Wonkblog article, <a href="http://www.washingtonpost.com/blogs/wonkblog/wp/2014/04/30/more-reasons-why-the-u-s-is-the-best-place-to-be-rich/">More reasons why the U.S. is the best place to be rich</a>, which shows the income share of the top 1% rising dramatically in the United States from 1981 to 2012. Can you spot the type error?</p>
+
+<div align="center"><img src="top-shares.jpg" width="373" height="807" /></div>
+
+<p>Did you find it? No? Well, let’s consider the dependent variable here. In order for a chart to make sense, the type of the dependent variable needs to be constant: it can’t depend itself depend on the independent variable (in this case, time). This is, for instance, why we need to choose a particular year to discount to in charts of dollars vs time: in general, the type of money depends on time!</p>
+
+<p>The problem in this chart is a bit more subtle: the people who comprise the top 1% change over time. This is not merely a technical consideration. You can easily imagine a society with a high level of mobility in which people routinely rotate in and out of the top 1%. In such a society, is a chart like the one above really indicative of any problem? While we aren’t quite at that level of mobility, <a href="http://www.nytimes.com/2014/04/20/opinion/sunday/from-rags-to-riches-to-rags.html?smid=pl-share">Thomas A. Hirschl and Mark R. Rank found</a> that 12% of Americans are in the top 1% for at least one year, and 73% are in the top 20%. This dynamic view of income distribution is made completely invisible by Ingraham’s chart.</p>
+
+<p>So, Ingraham’s chart fails my internal type checker, and in my opinion, such charts should not exist. Don’t get me wrong: I think inequality <em>is</em> a huge problem (albeit much more so on the global level than domestically). But it serves no one to make misleading presentations of data. Often the desire to be righteous blinds us to the virtues of being right. Until we have a system that can automatically type check our data analyses and presentations, we need to be extra vigilant ourselves to make sure that what we’re doing with data actually makes sense. Friends don’t let friends make type errors. So be a mensch: type check your friends, not just your enemies.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/type-checking-the-inequality-debate.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/type-checking-the-inequality-debate.html"
+data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+<!-- entry end -->
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'ejenk'; // required: replace example with your forum shortname
+
+/* * * DONT EDIT BELOW THIS LINE * * */
+(function() {
+var dsq = document.createElement("script"); dsq.type = "text/javascript"; dsq.async = true;
+dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+(document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div id="footer">CC by-nc-nd <a href="http://ejenk.com/">Evan Jenkins</a> &mdash; <a href="mailto:ejenk&#64;ejenk&#46;com">ejenk&#64;ejenk&#46;com</a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'ejenk'; // required: replace example with your forum shortname
+
+/* * * DONT EDIT BELOW THIS LINE * * */
+(function () {
+var s = document.createElement("script"); s.async = true;
+s.type = "text/javascript";
+s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+(document.getElementsByTagName("HEAD")[0] || document.getElementsByTagName("BODY")[0]).appendChild(s);
+}());
+</script>
+</body></html>
