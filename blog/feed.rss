@@ -2,9 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>The Market Completionist</title><link>http://ejenk.com/blog</link>
 <description>Thoughts on finance, economics, and beyond</description><language>en</language>
-<lastBuildDate>Wed, 30 Apr 2014 12:18:44 -0500</lastBuildDate>
-<pubDate>Wed, 30 Apr 2014 12:18:44 -0500</pubDate>
+<lastBuildDate>Wed, 03 Dec 2014 20:10:38 -0600</lastBuildDate>
+<pubDate>Wed, 03 Dec 2014 20:10:38 -0600</pubDate>
 <atom:link href="http://ejenk.com/blog/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+I have met the efficient market, and it is us
+</title><description><![CDATA[
+
+<p>There’s a famous mathematical puzzle that goes something like this: on an island, there live 200 supremely rational, law-abiding, non-suicidal people, some of whom have brown eyes and some of whom have blue eyes. They are bound by a sacred rule: they must not learn the color of their own eyes. If they do, then they must kill themselves by nightfall. One day, a green-eyed fairy descends from the heavens and proclaims, “I see at least one person who has blue eyes.” What happens?</p>
+
+<p>I won’t dissect this puzzle in detail, as <a href="http://terrytao.wordpress.com/2008/02/05/the-blue-eyed-islanders-puzzle/">others have already done so</a>. The crux of the solution (spoiler alert!) lies in understanding that even if everybody knows a certain fact (everybody can see blue-eyed people around them), the public statement of that fact can still add information to the public knowledge—sometimes with drastic consequences!</p>
+
+<p>I immediately thought of this puzzle after reading <a href="http://www.nytimes.com/2014/12/04/upshot/how-our-taxi-article-happened-to-undercut-the-efficient-market-hypothesis.html">Josh Barro’s alleged debunking of the efficient market hypothesis</a>. The efficient market hypothesis says, roughly, that the price of a security incorporates all publicly known information. Now, this isn’t really a “hypothesis” in the scientific sense of the word, since it’s not making a concrete, testable prediction, but that never seems to stop people from trying to refute it.</p>
+
+<p>Barro’s argument goes as follows. On Thanksgiving, he wrote an article about <a href="http://www.nytimes.com/2014/11/28/upshot/under-pressure-from-uber-taxi-medallion-prices-are-plummeting.html">falling prices of taxi medallions</a>. This wasn’t some big investigative scoop—the few people who pay attention to taxi medallion prices already knew that prices were falling. Barro merely put that information in a prominent place, <a href="http://www.nytimes.com/images/2014/11/28/nytfrontpage/scan.pdf">the front page of the New York Times</a> the following morning. When the stock market opened on Friday, the stock of Medallion Financial, which invests in loans secured by taxi medallions, was down 6%.</p>
+
+<p>Aha! Gotcha, efficient market hypothesis! Despite no new information being released to the public, and nothing else substantial changing in the taxi medallion situation between Wednesday’s close and Friday’s open, Josh Barro single-handedly tanked Medallion’s stock. But wait—is it <em>really</em> true that no new information became available? Even if everybody already knew the information in Josh’s article, the fact that it appeared on the front page of the New York Times brought the situation to a head. Now, <em>everybody knows that everybody knows</em>. More to the point, if I’m a canny trader and I read Josh’s article in the morning paper, I picture hordes of mindless retail-investing zombies shambling over each other in an attempt to sell off their shares of Medallion. What this means is that there’s a great buying opportunity somewhere well below the current price, so certainly I shouldn’t be trying to buy anywhere near where the stock was on Wednesday’s close. And if I hold Medallion, I need to sell—fast!—hoping to catch the one buyer who was in too much of a hurry to read the paper that morning.</p>
+
+<p>“Buh-buh-but,” you may object, “that has nothing to do with the fundamentals of the company! It’s based on a bunch of people behaving irrationally!” Well, tough cookies! Nobody said anything about people behaving rationally, or that the price would clearly reflect the company’s fundamentals. The market is doing exactly what the efficient market hypothesis says it does: it’s incorporating new public information <em>instantly</em>. It just happens that the relevant information is not the information contained in the article, but rather the effect that information will have on the buyers and sellers in the market.</p>
+
+<p>Here’s the thing. Let’s say you think you’ve found some inefficiency in the market. Do you (a) exploit it to make lots of money, or (b) decide you can’t be bothered and maybe write an article crowing about how you’ve debunked the efficient market hypothesis? If, like most financial pundits, you choose option (b), then you haven’t really proved anything, since at a bare minimum, you need to show you can actually buy low and sell high based on whatever public information you think hasn’t been incorporated into the price. And if you choose option (a), well, you’re using your human and technological capital in exchange for a profitable trade. Markets are collections of human beings and machines who turn (typically) public knowledge into profitable trades. Seeing a profitable trade without any secret information doesn’t disprove the efficient market hypothesis: making that trade <em>is what makes the market efficient</em>. </p>
+
+<p>If this all sounds like a load of sophistry, it is, but there’s nothing wrong with that. As I said before, the efficient market hypothesis shouldn’t be taken as a statement of scientific fact, but rather as a lens through which we can try to understand how markets work. I would argue that, contrary to the claim that people exploiting public information for profit disproves the efficient market hypothesis, the efficiency of markets is what makes trading financial products even possible. If you had to know everything there is to know about a financial product in order to be able to trade it without worrying that it’s horribly mispriced, then nobody would ever trade anything. It’s the confidence that, to first approximation, everything is priced correctly that allows traders to actually do what they do.</p>
+<!-- text end -->
+<p id='twitter'><a href="http://ejenk.com/blog/i-have-met-the-efficient-market-and-it-is-us.html#disqus_thread">Comments?</a> &nbsp;
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/i-have-met-the-efficient-market-and-it-is-us.html"
+data-via="ejenk"
+>Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
+]]></description><link>http://ejenk.com/blog/i-have-met-the-efficient-market-and-it-is-us.html</link>
+<guid>http://ejenk.com/blog/i-have-met-the-efficient-market-and-it-is-us.html</guid>
+<dc:creator>Evan Jenkins</dc:creator>
+<pubDate>Wed, 03 Dec 2014 20:10:37 -0600</pubDate></item>
 <item><title>
 Type Checking the Inequality Debate
 </title><description><![CDATA[
@@ -422,48 +451,4 @@ In words: we should tune our consumption such that our time-discounted relative 
 <guid>http://ejenk.com/blog/why-you-shouldnt-care-about-preferences.html</guid>
 <dc:creator>Evan Jenkins</dc:creator>
 <pubDate>Wed, 29 Jan 2014 21:59:00 -0600</pubDate></item>
-<item><title>
-Buffett’s Jackpot
-</title><description><![CDATA[
-
-<p>A fun finance-y story making the rounds is <a href="http://dealbook.nytimes.com/2014/01/21/1-billion-for-a-perfect-n-c-a-a-bracket-courtesy-of-warren-buffett/">Warren Buffett’s offer of $1 billion</a> for filling out a perfect NCAA bracket. Most of the analysis has focused on estimating the odds of winning (the general consensus: not good). But since I’ve been on an asset pricing kick, I want to talk about the misleading values attached to giant prizes and what this prize is actually worth.</p>
-
-<p>As is the case with Powerball jackpots, Buffett’s prize is actually a choice of two prizes: if you want your full $1 billion, it will be paid out over 40 years in the form of a $25 million annual annuity. If you want a lump sum right now, you’ll have to settle for a mere $500 million. While the first choice nominally sums to $1 billion, you’re paying a huge opportunity cost to wait decades for much of that money. So which prize should you choose?</p>
-
-<p>The value of the lump sum is easy enough to calculate: you get $500 million now, so it’s worth $500 million. (I’m going to ignore taxes for most of the rest of this discussion because I don’t know enough about how taxes work. My guess is that, given a competent accountant, taxes won’t disproportionately affect one choice vs. the other.) The value of the annuity is also not too bad to calculate, if we believe our lovely asset pricing formula, \(p = E(mx)\). First, let’s see how this formula behaves for an asset that always pays out the same amount, that is, for a <em>risk-free</em> asset. If I put $1 to a risk-free one-period bond at time \(t\), what should I expect it to pay me at time \(t + 1\)? Well, since the payoff \(x_{t + 1}\) is nonrandom, we can pull it out of the conditional expectation:
-\[1 = E_t(m_{t + 1} x_{t + 1}) = x_{t + 1}E_t(m_{t + 1}),\]
-so
-\[x_{t + 1} = \frac{1}{E_t(m_{t + 1})}.\]
-The payoff \(x_{t + 1}\) is called the <em>risk-free rate</em> and is typically denoted by \(R^f\). These days, interest rates are pretty low, but the historical average risk-free rate is around 4%, that is, \(R^f = 1.04\). Since we’re talking about the next 40 years, let’s just use this number.</p>
-
-<p>So let’s look at the annuity’s payoff. It pays us $25 million each year for the next 40 years, so we can write \[x_{t + i} = d_{t + i} + p_{t + i},\]
-where
-\[d_{t + i} = \begin{cases}25 & \text{if $0 \leq i \leq 39$,}\\ 0 & \text{otherwise.}\end{cases}\]
-In other words, we can treat the payoff at time \(t + i\) as the sum of the annuity payoff \(d_{t + i}\) and the value \(p_{t + i}\) of the remaining payoffs. Assuming we get our first payment right now (so we tack it on to our starting price), our total value telescopes out as
-\begin{align*}
-25 + p_t &= 25 + E_t(m_{t + 1}x_{t + 1})\\
-&= 25 + 1.04^{-1}(25 + p_{t + 1})\\
-&= 25 + 1.04^{-1}(25 + 1.04^{-1}(25 + p_{t + 2}))\\
-&\vdots\\
-&= \sum_{i = 0}^{39} 1.04^{-i} \times 25\\
-&= \frac{1 - 1.04^{-40}}{1 - 1.04^{-1}} \times 25\\
-&\approx 515.
-\end{align*}
-So there’s our answer: the lump sum is worth $500 million, while the annuity is worth $515 million, so we should take the annuity, right?</p>
-
-<p>Not so fast. If you’re a semibillionaire with any ambition whatsoever, you’re not just going to stuff this money under your mattress (or worse, spend it!). With your newfound low risk-aversion, you’re going to want to plow your money into investments with a higher expected return than risk-free bonds. The stock market has historically returned more like 10%. Discount your annuity by 10% annually and it’s worth a measly $269 million!</p>
-
-<p>But surely your annuity is worth more than that, right? After all, our formula shows that it’s actually worth $515 million, at least to somebody. The difficulty is finding that somebody. Here’s where things get a bit hazy, at least to me. Surely some giant financial firm would be willing to trade $515 million for your stream of future payments. But I’m not sure what the tax or legal implications of this are. What you won’t be able to find is somebody willing to lend you $515 million at a 4% annual rate, unless they can be sure that the loan really is risk-free: this means they would need your stream of annuity payments as collateral, which is the same as actually owning the annuity!</p>
-
-<p>So my advice to you if you somehow win Warren Buffett’s money: hire some good lawyers and financial advisors to find out if you can feasibly sell your annuity. If you’re lucky, you might get a bit more than the lump sum. But either way, just know that you’re not even close to being a billionaire. So you’d better get your money to work!</p>
-<!-- text end -->
-<p id='twitter'><a href="http://ejenk.com/blog/buffetts-jackpot.html#disqus_thread">Comments?</a> &nbsp;
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="&lt;Type your comment here but please leave the URL so that other people can follow the comments&gt;" data-url="http://ejenk.com/blog/buffetts-jackpot.html"
- data-via="ejenk"
->Tweet</a>	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</p>
-]]></description><link>http://ejenk.com/blog/buffetts-jackpot.html</link>
-<guid>http://ejenk.com/blog/buffetts-jackpot.html</guid>
-<dc:creator>Evan Jenkins</dc:creator>
-<pubDate>Tue, 21 Jan 2014 00:00:00 -0600</pubDate></item>
 </channel></rss>
